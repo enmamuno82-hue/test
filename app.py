@@ -6,7 +6,7 @@ def load_data():
     sheet_ID = "133p_AZdXgB3YUstAlOrn25tOJuplWbuGkx9KYwW9O7M"
     url = f"https://docs.google.com/spreadsheets/d/133p_AZdXgB3YUstAlOrn25tOJuplWbuGkx9KYwW9O7M/export?format=csv"
 
-    data = pd.read_cvs(url)
+    data = pd.read_csv(url)
     return data
 
 df = load_data()
