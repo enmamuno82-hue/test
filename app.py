@@ -20,5 +20,5 @@ def create_standings(data):
     return standings.reset_index()
 
 games = load_data(0)
-standings(games)
+standings = create_standings(games)
 st.table(standings)
