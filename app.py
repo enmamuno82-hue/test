@@ -9,10 +9,16 @@ def load_data(gid):
     data = pd.read_csv(url)
     return data
 
-df = load_data(0)
+def create_standings(data):
+    standings = data.groupby([Player, Outcome]).size().ustack(fill_value=0).copy
+    #checks if collumn is empty
+    cols = ['W', 'L', 'T']
+    existing_cols = [c for c in cols if c in standings.columns]
+    standings = standings[existing_cols]
 
-st.write("Test data", df)
+    standings.sort_values(by='w', ascending=False)
+    return standings.reset_index()
 
-df = load_data(1430924563)
-
-st.write("Test data", df)
+games = load_data(0)
+standings(games)
+st.table(standings)
