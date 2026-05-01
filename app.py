@@ -11,4 +11,4 @@ def load_data():
 
 df = load_data()
 
-st.write("Test data", df.columns.tolist())
+st.write("Test data", df)
