@@ -10,7 +10,7 @@ def load_data(gid):
     return data
 
 def create_standings(data):
-    standings = data.groupby([Player, Outcome]).size().ustack(fill_value=0).copy
+    standings = data.groupby(['Player', 'Outcome']).size().ustack(fill_value=0).copy
     #checks if collumn is empty
     cols = ['W', 'L', 'T']
     existing_cols = [c for c in cols if c in standings.columns]
