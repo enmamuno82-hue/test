@@ -12,7 +12,8 @@ def load_data(gid):
 def create_standings(data):
     standings = data.groupby(['Player', 'Outcome']).size().unstack(fill_value=0)
     #checks if collumn is empty
-
+    standings = standings['Player', 'Wins', "Losses", "Draw"]
+    standings = standings.sort_values(by='Wins', ascending=False)
     return standings.reset_index()
 
 games = load_data(0)
