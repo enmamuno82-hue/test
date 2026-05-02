@@ -17,11 +17,10 @@ def create_standings(data):
     for c in col:
         if c not in standings.columns:
             col.remove(c)
-    
     standings = standings[col]
     standings = standings.sort_values(by='w', ascending=False)
     st.table(standings)
-    return standings
+    return standings.reset_index(drop=True)
 
 games = load_data(0)
 standings = create_standings(games)
