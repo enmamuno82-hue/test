@@ -25,7 +25,7 @@ def create_standings(data):
     return standings.reset_index(drop=True)
 
 games = load_data(0)
-players = load_data9(1430924563)
+players = load_data(1430924563)
 standings = create_standings(games)
 st.table(standings)
 st.table(players)
