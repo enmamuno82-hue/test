@@ -34,7 +34,7 @@ games = load_data(0)
 players = load_data(1430924563)
 standings = create_standings(games, players)
 st.dataframe(
-    leaderboard,
+    standings,
     column_config={
         "Win %": st.column_config.NumberColumn(
             "Win %",
