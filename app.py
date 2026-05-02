@@ -29,7 +29,7 @@ def create_standings(data, pdata):
     if 'w' in col:
         standings['Wins'] = standings['w']
         col.remove('w')
-        col = 'Wins' + col
+        col = ['Wins'] + col
 
     final_order = ['Player', 'GP', 'Win %'] + col
     standings = standings[final_order].sort_values(by='w', ascending=False)
