@@ -58,4 +58,3 @@ st.dataframe(
     },
     hide_index=True,
 )
-st.table(players)
