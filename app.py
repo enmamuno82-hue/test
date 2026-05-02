@@ -28,19 +28,18 @@ def create_standings(data, pdata):
 
     forder = []
     if 'w' in col:
+        standings = standings.rename(columns={'W': 'Wins'})
         forder = forder + ['Wins']
     if 'l' in col:
+        standings = standings.rename(columns={'l': 'Losses'})
         forder = forder + ['Losses']
     if 't' in col:
+        standings = standings.rename(columns={'t': 'Draws'})
         forder = forder + ['Draws']
 
-
-    standings = standings.sort_values(by='w', ascending=False)
-    order = ['Player', 'GP', 'Win %'] + col
     forder = ['Player', 'GP', 'Win %'] + forder
-    standings = standings[order]
-    standings.columns = [forder]
-    
+    standings = standings[forder]
+    standings = standings.sort_values(by='w', ascending=False)
     return standings.reset_index(drop=True)
 
 games = load_data(0)
