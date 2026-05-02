@@ -32,7 +32,7 @@ def create_standings(data, pdata):
         col = ['Wins'] + col
 
     final_order = ['Player', 'GP', 'Win %'] + col
-    standings = standings[final_order].sort_values(by='w', ascending=False)
+    standings = standings[final_order].sort_values(by='Wins', ascending=False)
     return standings.reset_index(drop=True)
 
 games = load_data(0)
