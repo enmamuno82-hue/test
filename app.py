@@ -39,7 +39,7 @@ def create_standings(data, pdata):
 
     forder = ['Player', 'GP', 'Win %'] + forder
     standings = standings[forder]
-    standings = standings.sort_values(by='w', ascending=False)
+    standings = standings.sort_values(by='Wins', ascending=False)
     return standings.reset_index(drop=True)
 
 games = load_data(0)
