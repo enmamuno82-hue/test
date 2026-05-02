@@ -20,7 +20,7 @@ def create_standings(data, pdata):
     standings = standings[col].reset_index()
 
     standings = standings.merge(pdata[['PlayerID', 'Name']], on='PlayerID', how='left')
-    standings['Player'] = standings['PlayerID'].astype(str) + " " + standings['Name']
+    standings['Player'] = standings['Name']
 
     col.remove('PlayerID')
     standings['GP'] = standings[col].sum(axis=1)
