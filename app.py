@@ -24,7 +24,7 @@ def create_standings(data, pdata):
 
     col.remove('PlayerID')
     standings['GP'] = standings[col].sum(axis=1)
-    standings['Win %'] = (standings['w'] / standings['GP']).round(2)
+    standings['Win %'] = (standings['w'] / standings['GP']).round(3)
 
     final_order = ['Player', 'GP', 'Win %'] + col
     standings = standings[final_order].sort_values(by='w', ascending=False)
