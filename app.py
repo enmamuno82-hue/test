@@ -21,6 +21,7 @@ def create_standings(data, pdata):
 
     standings = standings.merge(pdata[['PlayerID', 'Name']], on='PlayerID', how='left')
     standings['Player'] = standings['Name'] + "\n(" + standings['PlayerID'].astype(str) + ")"
+    final_cols = ['Player'] + col
 
     standings = standings.sort_values(by='w', ascending=False)
     return standings.reset_index(drop=True)
