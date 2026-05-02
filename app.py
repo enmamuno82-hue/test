@@ -26,21 +26,19 @@ def create_standings(data, pdata):
     standings['GP'] = standings[col].sum(axis=1)
     standings['Win %'] = (standings['w'] / standings['GP']).round(3)
 
+    forder = []
     if 'w' in col:
-        standings['Wins'] = standings['w']
-        col.remove('w')
-        col = col + ['Wins']
+        forder = forder + ['Wins']
     if 'l' in col:
-        standings['Losses'] = standings['l']
-        col.remove('l')
-        col = col + ['Losses']
+        forder = forder + ['Losses']
     if 't' in col:
-        standings['Draws'] = standings['t']
-        col.remove('t')
-        col = col + ['Draws']
+        forder = forder + ['Draws']
 
-    final_order = ['Player', 'GP', 'Win %'] + col
-    standings = standings[final_order].sort_values(by='Wins', ascending=False)
+    order = ['Player', 'GP', 'Win %'] + col
+    forder = ['Player', 'GP', 'Win %'] + forder
+    standings = standings[order]
+    tandigs.columns = [forder]
+    standings = standings.sort_values(by='Wins', ascending=False)
     return standings.reset_index(drop=True)
 
 games = load_data(0)
