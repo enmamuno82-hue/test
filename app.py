@@ -13,11 +13,12 @@ def create_standings(data):
     standings = data.groupby(['Player', 'Outcome']).size().unstack(fill_value=0)
     #checks if collumn is empty
     standings = standings.reset_index()
-    standings = standings[['Player', 'w', 'l', 't']]
-    standings = standings.sort_values(by='w', ascending=False)
+    st.write(standings.collumn)
+    #standings = standings[['Player', 'w', 'l', 't']]
+    #standings = standings.sort_values(by='w', ascending=False)
     st.table(standings)
     return standings
 
 games = load_data(0)
 standings = create_standings(games)
-st.table(standings)
+#st.table(standings)
