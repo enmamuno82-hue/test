@@ -19,7 +19,6 @@ def create_standings(data):
             col.remove(c)
     standings = standings[col]
     standings = standings.sort_values(by='w', ascending=False)
-    st.table(standings)
     return standings.reset_index(drop=True)
 
 games = load_data(0)
