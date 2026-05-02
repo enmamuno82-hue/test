@@ -10,10 +10,9 @@ def load_data(gid):
     return data
 
 def create_standings(data):
-    standings = data.groupby(['Player', 'Outcome']).size().unstack(fill_value=0)
-    #checks if collumn is empty
+    standings = data.groupby(['PlayerID', 'Outcome']).size().unstack(fill_value=0)
     standings = standings.reset_index()
-    col = ['Player', 'w', 'l', 't']
+    col = ['PlayerID', 'w', 'l', 't']
     for c in col:
         if c not in standings.columns:
             col.remove(c)
