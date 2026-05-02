@@ -18,7 +18,7 @@ def create_standings(data):
         if c not in standings.columns:
             col.remove(c)
     
-    standings = standings[['Player', 'w', 'l', 't']]
+    standings = standings[col]
     standings = standings.sort_values(by='w', ascending=False)
     st.table(standings)
     return standings
