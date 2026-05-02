@@ -14,8 +14,8 @@ def create_standings(data):
     #checks if collumn is empty
     standings = standings.reset_index()
     standings = standings[['Player', 'w', 'l', 't']]
-    st.table(standings)
     standings = standings.sort_values(by='w', ascending=False)
+    st.table(standings)
     return standings
 
 games = load_data(0)
