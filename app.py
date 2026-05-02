@@ -23,8 +23,11 @@ def create_standings(data, pdata):
     standings['Player'] = standings['Name'] + "\n(" + standings['PlayerID'].astype(str) + ")"
 
     col.remove('PlayerID')
-    final_cols = ['Player'] + col
-    standings = standings[final_cols].sort_values(by='w', ascending=False)
+    standings['GP'] = standings[col].sum(axis=1)
+    standings['Win %'] = (standings['w'] / standings['GP']).round(2)
+
+    final_order = ['Player', 'GP', 'Win %'] + col
+    standings = standings[final_order].sort_values(by='w', ascending=False)
     return standings.reset_index(drop=True)
 
 games = load_data(0)
