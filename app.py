@@ -33,5 +33,15 @@ def create_standings(data, pdata):
 games = load_data(0)
 players = load_data(1430924563)
 standings = create_standings(games, players)
-st.table(standings)
+st.dataframe(
+    leaderboard,
+    column_config={
+        "Win %": st.column_config.NumberColumn(
+            "Win %",
+            help="Percentage of games won",
+            format="%.3f",  # This forces exactly 3 decimal places (e.g. 0.500)
+        )
+    },
+    hide_index=True,
+)
 st.table(players)
