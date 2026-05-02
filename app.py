@@ -14,6 +14,11 @@ def create_standings(data):
     #checks if collumn is empty
     standings = standings.reset_index()
     st.write(standings.columns)
+    col = ['Player', 'w', 'l', 't']
+    for c in col:
+        if c not in standings.columns:
+            col.remove[c]
+    
     #standings = standings[['Player', 'w', 'l', 't']]
     #standings = standings.sort_values(by='w', ascending=False)
     st.table(standings)
