@@ -37,7 +37,7 @@ def create_standings(data, pdata):
     order = ['Player', 'GP', 'Win %'] + col
     forder = ['Player', 'GP', 'Win %'] + forder
     standings = standings[order]
-    standigs.columns = [forder]
+    standings.columns = [forder]
     standings = standings.sort_values(by='Wins', ascending=False)
     return standings.reset_index(drop=True)
 
