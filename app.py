@@ -16,7 +16,7 @@ def create_standings(data):
     existing_cols = [c for c in cols if c in standings.columns]
     standings = standings[existing_cols]
 
-    return standings.reset_index()
+    return standings
 
 games = load_data(0)
 standings = create_standings(games)
