@@ -34,11 +34,13 @@ def create_standings(data, pdata):
     if 't' in col:
         forder = forder + ['Draws']
 
+
+    standings = standings.sort_values(by='w', ascending=False)
     order = ['Player', 'GP', 'Win %'] + col
     forder = ['Player', 'GP', 'Win %'] + forder
     standings = standings[order]
     standings.columns = [forder]
-    standings = standings.sort_values(by='Wins', ascending=False)
+    
     return standings.reset_index(drop=True)
 
 games = load_data(0)
