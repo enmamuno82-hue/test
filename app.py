@@ -55,7 +55,7 @@ st.dataframe(
     standings,
     column_config={
         "PlayerID": None,
-        "Profile_Link": st.column_config.LinkColumn("View", display_text=r"(.+)"),
+        "Profile_Link": st.column_config.LinkColumn("Players", display_text="Player"),
         "Win %": st.column_config.NumberColumn(format="%.3f")
     },
     hide_index=True,
