@@ -56,6 +56,7 @@ st.dataframe(
     column_config={
         "PlayerID": None,
         "Player": None,
+        "Profile_Link": st.column_config.LinkColumn("Player Name", display_text=r"&name=(.+)" ),
         "Win %": st.column_config.NumberColumn(format="%.3f")
     },
     hide_index=True,
