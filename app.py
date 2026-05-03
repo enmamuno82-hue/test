@@ -42,7 +42,7 @@ def create_standings(data, pdata):
     standings.insert(0, 'Seed', range(1, len(standings) + 1))
 
     base_url = 'https://7mj8sspzd6qkm2qloaxshl.streamlit.app'
-    standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str)
+    standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str) + "&name=" + standings['Player']
 
     return standings.reset_index(drop=True)
 
