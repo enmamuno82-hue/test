@@ -54,11 +54,7 @@ st.title("Chess Tournament Leaderboard")
 st.dataframe(
     standings,
     column_config={
-        "Win %": st.column_config.NumberColumn(
-            "Win %",
-            help="Percentage of games won",
-            format="%.3f"
-        )
+        "Win %": st.column_config.NumberColumn(format="%.3f")
     },
     hide_index=True,
 )
