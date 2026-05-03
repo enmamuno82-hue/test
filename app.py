@@ -55,6 +55,10 @@ st.dataframe(
     standings,
     column_config={
         "PlayerID": None,
+        "Profile_Link": st.column_config.LinkColumn(
+            "Player Name",       # This renames the column header for the user
+            display_text=r"(.+)" # This is a trick to show the name instead of the URL
+            ),
         "Win %": st.column_config.NumberColumn(format="%.3f")
     },
     hide_index=True,
