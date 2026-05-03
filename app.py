@@ -53,7 +53,7 @@ st.dataframe(
         "Win %": st.column_config.NumberColumn(
             "Win %",
             help="Percentage of games won",
-            format="%.3f",  # This forces exactly 3 decimal places (e.g. 0.500)
+            format="%.3f"
         )
     },
     hide_index=True,
