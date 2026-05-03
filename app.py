@@ -45,7 +45,7 @@ def create_standings(data, pdata):
     standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str) + "&name=" + standings['Player']
     forder = ['Seed', 'Profile_Link'] + forder
 
-    return standings[forder].reset_index(drop=True)
+    return standings[forder].reset_index
 
 games = load_data(0)
 players = load_data(1430924563)
