@@ -54,6 +54,7 @@ st.title("Chess Tournament Leaderboard")
 st.dataframe(
     standings,
     column_config={
+        "PlayerID": None
         "Win %": st.column_config.NumberColumn(format="%.3f")
     },
     hide_index=True,
