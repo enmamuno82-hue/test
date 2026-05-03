@@ -44,7 +44,7 @@ def create_standings(data, pdata):
     base_url = 'https://7mj8sspzd6qkm2qloaxshl.streamlit.app'
     standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str)
 
-    return standings.reset_index(drop=True)
+    return standings.reset_index
 
 games = load_data(0)
 players = load_data(1430924563)
