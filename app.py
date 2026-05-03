@@ -37,9 +37,13 @@ def create_standings(data, pdata):
         standings = standings.rename(columns={'t': 'Draws'})
         forder = forder + ['Draws']
 
-    forder = ['Player', 'GP', 'Win %'] + forder
+    forder = ['Player', 'GP', 'Win %'] + forder + ['PlayerID']
     standings = standings[forder].sort_values(by='Wins', ascending=False)
     standings.insert(0, 'Seed', range(1, len(standings) + 1))
+
+    base_url = 'https://7mj8sspzd6qkm2qloaxshl.streamlit.app'
+    standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str)
+
     return standings.reset_index(drop=True)
 
 games = load_data(0)
