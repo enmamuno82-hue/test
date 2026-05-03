@@ -44,7 +44,7 @@ def create_standings(data, pdata):
     base_url = 'https://7mj8sspzd6qkm2qloaxshl.streamlit.app'
     standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str)
 
-    return standings.reset_index()
+    return standings.reset_index(drop=True)
 
 games = load_data(0)
 players = load_data(1430924563)
@@ -55,10 +55,7 @@ st.dataframe(
     standings,
     column_config={
         "PlayerID": None,
-        "Profile_Link": st.column_config.LinkColumn(
-            "Player Name",       # This renames the column header for the user
-            display_text=r"(.+)" # This is a trick to show the name instead of the URL
-            ),
+        st.column_config.LinkColumn("View", display_text="🔗 Profile"),
         "Win %": st.column_config.NumberColumn(format="%.3f")
     },
     hide_index=True,
