@@ -51,7 +51,7 @@ games = load_data(0)
 players = load_data(1430924563)
 
 
-if "player_ID" in st.query_params:
+if "player_id" in st.query_params:
     print("what")
 else:
     standings = create_standings(games, players)
