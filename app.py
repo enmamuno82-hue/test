@@ -63,10 +63,15 @@ def create_standings(data, pdata):
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
 
-    if st.button("⬅️ Back to Standings"):
-        st.query_params.clear()
-        st.rerun()
+    player_row = pdata[pdata['PlayerID'].astype(str) == str(pid)]
 
+    if not player_row.empty:
+        player_name = player_row.iloc[0]['Name']
+        st.title(f"👤 {player_name}")
+        
+        st.subheader("Game History")
+    else:
+        st.error("Player not found.")
 
 games = load_data(0)
 players = load_data(1430924563)
