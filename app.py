@@ -81,7 +81,7 @@ def show_lookup(pdata):
         # We add a "placeholder" so it doesn't automatically select the first player
         names_list = ["--- Select a Player ---"] + list(pdata['Name'].unique())
         
-        selected_name = st.text_input("Search for a player:", names_list)
+        selected_name = st.selectbox("Search for a player:", names_list)
 
         # 2. If they actually picked a name (and not the placeholder)
         if selected_name != "--- Select a Player ---":
