@@ -42,7 +42,7 @@ def create_standings(data, pdata):
     standings.insert(0, 'Seed', range(1, len(standings) + 1))
 
     base_url = 'https://7mj8sspzd6qkm2qloaxshl.streamlit.app'
-    standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str) + "&name=" + standings['Player']
+    standings['Profile_Link'] = "/?player_id=" + standings['PlayerID'].astype(str) + "&name=" + standings['Player']
     forder = ['Seed', 'Profile_Link'] + forder
 
     standings = standings[forder].reset_index(drop=True)
@@ -80,7 +80,7 @@ def show_lookup(pdata):
         # 1. Create a clean list of names for the dropdown
         # We add a "placeholder" so it doesn't automatically select the first player
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
-    
+
     selected_name = st.selectbox("Search for a player:", names_list)
 
         # 2. If they actually picked a name (and not the placeholder)
