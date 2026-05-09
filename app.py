@@ -74,24 +74,24 @@ def player_profile(data, pdata):
         st.error("Player not found.")
 
 def show_lookup(pdata):
-    with st.sidebar:
-        st.title("🔍 Player Lookup")
+    #with st.sidebar:
+    st.title("🔍 Player Lookup")
         
         # 1. Create a clean list of names for the dropdown
         # We add a "placeholder" so it doesn't automatically select the first player
-        names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
-        st.write(names_list)
-        selected_name = st.selectbox("Search for a player:", names_list)
+    names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
+    st.write(names_list)
+    selected_name = st.selectbox("Search for a player:", names_list)
 
         # 2. If they actually picked a name (and not the placeholder)
-        if selected_name != "--- Select a Player ---":
+    if selected_name != "--- Select a Player ---":
             # 3. Find the ID associated with that name
             # We filter the dataframe where the name matches and grab the 'PlayerID'
-            selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
+        selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
             
             # 4. Teleport!
-            st.query_params["player_id"] = selected_id
-            st.rerun()
+        st.query_params["player_id"] = selected_id
+        st.rerun()
 
 games = load_data(0)
 players = load_data(1430924563)
