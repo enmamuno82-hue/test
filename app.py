@@ -45,16 +45,7 @@ def create_standings(data, pdata):
     standings['Profile_Link'] = base_url + "/?player_id=" + standings['PlayerID'].astype(str) + "&name=" + standings['Player']
     forder = ['Seed', 'Profile_Link'] + forder
 
-    return standings[forder].reset_index(drop=True)
-
-games = load_data(0)
-players = load_data(1430924563)
-
-
-if "player_id" in st.query_params:
-    st.write("What")
-else:
-    standings = create_standings(games, players)
+    standings = standings[forder].reset_index(drop=True)
 
     st.title("Chess Tournament Leaderboard")
     st.dataframe(
@@ -67,3 +58,18 @@ else:
         },
         hide_index=True,
     )
+
+
+def player_profile():
+    pass
+
+games = load_data(0)
+players = load_data(1430924563)
+
+
+if "player_id" in st.query_params:
+    st.write("What")
+else:
+    standings = create_standings(games, players)
+
+    
