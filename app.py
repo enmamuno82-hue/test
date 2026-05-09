@@ -99,7 +99,7 @@ players = load_data(1430924563)
 if "player_id" in st.query_params:
     player_profile(games, players)
 else:
-    show_lookup(players)
+    show_lookup(games)
     st.title("Chess Tournament Leaderboard")
 
     standings = create_standings(games, players)
