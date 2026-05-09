@@ -110,11 +110,11 @@ else:
         col1, col2, col3, col4, col5 = st.columns([1, 3, 1, 3, 1])
     
     with col1:
-        st.markdown(f"**#{row['Seed1']}**")
+        st.markdown(f"**#{row['Seed']}**")
         
     with col2:
         # Button for Player 1
-        if st.button(row['Player1'], key=f"p1_{index}"):
+        if st.button(row['Player'], key=f"p1_{index}"):
             st.query_params["player_id"] = row['P1_ID']
             st.rerun()
             
@@ -123,12 +123,12 @@ else:
         
     with col4:
         # Button for Player 2
-        if st.button(row['Player2'], key=f"p2_{index}"):
-            st.query_params["player_id"] = row['P2_ID']
+        if st.button(row['Player'], key=f"p2_{index}"):
+            st.query_params["player_id"] = row['P2_IDl']
             st.rerun()
             
     with col5:
-        st.markdown(f"**#{row['Seed2']}**")
+        st.markdown(f"**#{row['Seed']}**")
     
     st.divider() # Draw a line between matches
     
