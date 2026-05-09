@@ -100,7 +100,14 @@ players = load_data(1430924563)
 if "player_id" in st.query_params:
     player_profile(games, players)
 else:
+    left, right = st.columns(2)
+
+    with left:
+        standings = create_standings(games, players)
+    
+    with right:
+        st.write(players)
     show_lookup(players)
-    standings = create_standings(games, players)
+    
 
     
