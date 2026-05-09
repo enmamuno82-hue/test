@@ -47,7 +47,6 @@ def create_standings(data, pdata):
 
     standings = standings[forder].reset_index(drop=True)
 
-    st.title("Chess Tournament Leaderboard")
     st.dataframe(
         standings,
         column_config={
@@ -100,6 +99,8 @@ players = load_data(1430924563)
 if "player_id" in st.query_params:
     player_profile(games, players)
 else:
+    show_lookup(players)
+    st.title("Chess Tournament Leaderboard")
     left, right = st.columns(2)
 
     with left:
@@ -107,7 +108,7 @@ else:
     
     with right:
         st.write(players)
-    show_lookup(players)
+    
     
 
     
