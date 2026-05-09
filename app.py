@@ -80,7 +80,7 @@ def show_lookup(pdata):
         # 1. Create a clean list of names for the dropdown
         # We add a "placeholder" so it doesn't automatically select the first player
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
-        
+        st.write(names_list)
         selected_name = st.selectbox("Search for a player:", names_list)
 
         # 2. If they actually picked a name (and not the placeholder)
