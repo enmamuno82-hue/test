@@ -69,7 +69,6 @@ def player_profile(data, pdata):
         st.error("Player not found.")
 
 def show_lookup(pdata):
-    #with st.sidebar:
     st.title("🔍 Player Lookup")
         
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
@@ -88,6 +87,11 @@ players = load_data(1430924563)
 
 
 if "player_id" in st.query_params:
+
+    if st.button("⬅️ Back to Leaderboard"):
+        st.query_params.clear()
+        st.rerun()
+    
     player_profile(games, players)
 else:
     show_lookup(players)
