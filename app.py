@@ -41,9 +41,7 @@ def create_standings(data, pdata):
     standings = standings[forder].sort_values(by='Wins', ascending=False)
     standings.insert(0, 'Seed', range(1, len(standings) + 1))
 
-    base_url = 'https://7mj8sspzd6qkm2qloaxshl.streamlit.app'
-    standings['Profile_Link'] = "/?player_id=" + standings['PlayerID'].astype(str) + "&name=" + standings['Player']
-    forder = ['Seed', 'Profile_Link'] + forder
+    forder = ['Seed'] + forder
 
     standings = standings[forder].reset_index(drop=True)
 
@@ -51,8 +49,6 @@ def create_standings(data, pdata):
         standings,
         column_config={
             "PlayerID": None,
-            "Player": None,
-            "Profile_Link": st.column_config.LinkColumn("Player Name", display_text=r"&name=(.+)" ),
             "Win %": st.column_config.NumberColumn(format="%.3f")
         },
         hide_index=True,
@@ -76,19 +72,14 @@ def show_lookup(pdata):
     #with st.sidebar:
     st.title("🔍 Player Lookup")
         
-        # 1. Create a clean list of names for the dropdown
-        # We add a "placeholder" so it doesn't automatically select the first player
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
 
     selected_name = st.selectbox("Search for a player:", names_list)
 
-        # 2. If they actually picked a name (and not the placeholder)
     if selected_name != "--- Select a Player ---":
-            # 3. Find the ID associated with that name
-            # We filter the dataframe where the name matches and grab the 'PlayerID'
+
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
             
-            # 4. Teleport!
         st.query_params["player_id"] = selected_id
         st.rerun()
 
@@ -104,33 +95,6 @@ else:
 
     standings = create_standings(games, players)
 
-    for index, row in games.iterrows():
-    # 1. Create a layout for the row
-    # [Seed1, Player1, "VS", Player2, Seed2]
-        col1, col2, col3, col4, col5 = st.columns([1, 3, 1, 3, 1])
-    
-    with col1:
-        st.markdown(f"**#{row['Seed']}**")
-        
-    with col2:
-        # Button for Player 1
-        if st.button(row['Player'], key=f"p1_{index}"):
-            st.query_params["player_id"] = row['P1_ID']
-            st.rerun()
-            
-    with col3:
-        st.write("vs")
-        
-    with col4:
-        # Button for Player 2
-        if st.button(row['Player'], key=f"p2_{index}"):
-            st.query_params["player_id"] = row['P2_IDl']
-            st.rerun()
-            
-    with col5:
-        st.markdown(f"**#{row['Seed']}**")
-    
-    st.divider() # Draw a line between matches
     
     
 
