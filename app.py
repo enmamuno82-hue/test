@@ -60,15 +60,20 @@ def create_standings(data, pdata):
     )
 
 
-def player_profile():
-    pass
+def player_profile(data, pdata):
+    pid = st.query_params["player_id"]
+
+    if st.button("⬅️ Back to Standings"):
+        st.query_params.clear()
+        st.rerun()
+
 
 games = load_data(0)
 players = load_data(1430924563)
 
 
 if "player_id" in st.query_params:
-    st.write("What")
+    player_profile(games, players)
 else:
     standings = create_standings(games, players)
 
