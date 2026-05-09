@@ -101,13 +101,36 @@ if "player_id" in st.query_params:
 else:
     show_lookup(players)
     st.title("Chess Tournament Leaderboard")
-    left, right = st.columns(2)
 
-    with left:
-        standings = create_standings(games, players)
+    standings = create_standings(games, players)
+
+    for index, row in players.iterrows():
+    # 1. Create a layout for the row
+    # [Seed1, Player1, "VS", Player2, Seed2]
+    col1, col2, col3, col4, col5 = st.columns([1, 3, 1, 3, 1])
     
-    with right:
-        st.write(players)
+    with col1:
+        st.markdown(f"**#{row['Seed1']}**")
+        
+    with col2:
+        # Button for Player 1
+        if st.button(row['Player1'], key=f"p1_{index}"):
+            st.query_params["player_id"] = row['P1_ID']
+            st.rerun()
+            
+    with col3:
+        st.write("vs")
+        
+    with col4:
+        # Button for Player 2
+        if st.button(row['Player2'], key=f"p2_{index}"):
+            st.query_params["player_id"] = row['P2_ID']
+            st.rerun()
+            
+    with col5:
+        st.markdown(f"**#{row['Seed2']}**")
+    
+    st.divider() # Draw a line between matches
     
     
 
