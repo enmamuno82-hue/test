@@ -87,7 +87,7 @@ def show_lookup(pdata):
         if selected_name != "--- Select a Player ---":
             # 3. Find the ID associated with that name
             # We filter the dataframe where the name matches and grab the 'PlayerID'
-            selected_id = pdat[pdata['Name'] == selected_name]['PlayerID'].values[0]
+            selected_id = pdata[pdata['Name'] == selected_name]['PlayerID'].values[0]
             
             # 4. Teleport!
             st.query_params["player_id"] = selected_id
