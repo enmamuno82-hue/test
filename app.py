@@ -99,12 +99,12 @@ players = load_data(1430924563)
 if "player_id" in st.query_params:
     player_profile(games, players)
 else:
-    show_lookup(games)
+    show_lookup(players)
     st.title("Chess Tournament Leaderboard")
 
     standings = create_standings(games, players)
 
-    for index, row in players.iterrows():
+    for index, row in gamers.iterrows():
     # 1. Create a layout for the row
     # [Seed1, Player1, "VS", Player2, Seed2]
         col1, col2, col3, col4, col5 = st.columns([1, 3, 1, 3, 1])
