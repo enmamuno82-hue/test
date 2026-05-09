@@ -104,7 +104,7 @@ else:
 
     standings = create_standings(games, players)
 
-    for index, row in gamers.iterrows():
+    for index, row in games.iterrows():
     # 1. Create a layout for the row
     # [Seed1, Player1, "VS", Player2, Seed2]
         col1, col2, col3, col4, col5 = st.columns([1, 3, 1, 3, 1])
