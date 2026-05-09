@@ -69,8 +69,7 @@ def player_profile(data, pdata):
         st.error("Player not found.")
 
 def show_lookup(pdata):
-    st.title("🔍 Player Lookup")
-        
+
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
 
     selected_name = st.selectbox("Search for a player:", names_list)
