@@ -49,16 +49,21 @@ def create_standings(data, pdata):
 
 games = load_data(0)
 players = load_data(1430924563)
-standings = create_standings(games, players)
 
-st.title("Chess Tournament Leaderboard")
-st.dataframe(
-    standings,
-    column_config={
-        "PlayerID": None,
-        "Player": None,
-        "Profile_Link": st.column_config.LinkColumn("Player Name", display_text=r"&name=(.+)" ),
-        "Win %": st.column_config.NumberColumn(format="%.3f")
-    },
-    hide_index=True,
-)
+
+if "Player_ID" in st.query_params:
+    pass
+else:
+    standings = create_standings(games, players)
+
+    st.title("Chess Tournament Leaderboard")
+    st.dataframe(
+        standings,
+        column_config={
+            "PlayerID": None,
+            "Player": None,
+            "Profile_Link": st.column_config.LinkColumn("Player Name", display_text=r"&name=(.+)" ),
+            "Win %": st.column_config.NumberColumn(format="%.3f")
+        },
+        hide_index=True,
+    )
