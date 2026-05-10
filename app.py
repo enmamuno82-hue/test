@@ -70,22 +70,14 @@ def show_lookup(pdata):
 
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
 
-    selected_name = st.selectbox("Search for a player:", names_list)
+    selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key="player_search")
 
     if selected_name != "--- Select a Player ---":
         
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
-        st.write("weirdf")
-        if "player_id" not in st.query_params:
-            st.query_params["player_id"] = selected_id
-            st.write("stnd")
-            st.rerun()
-        elif st.query_params["player_id"] != selected_id:
-            st.query_params["player_id"] = selected_id
-            st.write("pla")
-            st.rerun()
-        else:
-            st.write("neither")
+        
+        st.query_params["player_id"] = selected_id
+        st.rerun()
 
 
 games = load_data(0)
