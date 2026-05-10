@@ -76,7 +76,7 @@ def lookup(pdata):
         
         st.query_params["player_id"] = selected_id
 
-        del st.session_state["player_search"]
+        st.session_state.pop("player_search", None)
 
 
 games = load_data(0)
