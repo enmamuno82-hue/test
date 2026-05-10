@@ -83,8 +83,6 @@ games = load_data(0)
 players = load_data(1430924563)
 
 
-
-
 if "player_id" in st.query_params:
 
     with st.sidebar:
