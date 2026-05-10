@@ -68,14 +68,15 @@ def player_profile(data, pdata):
 
 def lookup(pdata):
 
-    selected_name = st.session_state.player_search
+    selected_name = st.session_state.get("player_search")
 
     if selected_name != "--- Select a Player ---":
         
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
         
         st.query_params["player_id"] = selected_id
-        del st.session_state.player_search
+
+        del st.session_state["player_search"]
 
 
 games = load_data(0)
