@@ -72,7 +72,7 @@ def lookup(pdata):
     none = None
 
     if selected_name != "--- Select a Player ---" or selected_name is not None:
-        
+        st.write(selected_name)
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID']
         
         st.query_params["player_id"] = selected_id
