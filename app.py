@@ -23,7 +23,7 @@ def create_standings(data, pdata):
 
     col.remove('PlayerID')
     standings['GP'] = standings[col].sum(axis=1)
-    standings['Win %'] = ((standings['w'] / standings['GP']) * 100).typestr() + "%"
+    standings['Win %'] = ((standings['w'] / standings['GP']) * 100).astype(str) + "%"
 
     forder = []
     if 'w' in col:
