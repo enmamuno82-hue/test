@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-if "search_id_0" not in st.session_state:
-    st.session_state.search_id = 0
-
 @st.cache_data
 def load_data(gid):
     sheet_ID = "133p_AZdXgB3YUstAlOrn25tOJuplWbuGkx9KYwW9O7M"
@@ -71,18 +68,17 @@ def player_profile(data, pdata):
 
 def lookup(pdata):
 
-    selected_name = st.session_state.get(f"player_search_{st.session_state.search_id}")
+    selected_name = st.session_state.get("player_search_")
 
     if selected_name is None:
         return
 
     if selected_name != "--- Select a Player ---":
-        st.write(selected_name)
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID']
         
         st.query_params["player_id"] = selected_id
 
-        st.session_state.pop(f"player_search_{st.session_state.search_id}", None)
+        st.session_state.pop("player_search", None)
         st.rerun()
 
 
@@ -90,15 +86,15 @@ games = load_data(0)
 players = load_data(1430924563)
 
 if "player_id" in st.query_params:
-    st.write(f"player_search_{st.session_state.search_id}")
+    st.write("player_search")
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
-        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"player_search_{st.session_state.search_id}", on_change=lookup(players))
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key="player_search", on_change=lookup(players))
 
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
-        st.session_state.pop(f"player_search_{st.session_state.search_id}", None)
-        st.session_state.search_id += 1
+        if "player_search" in st.session_state:
+            del st.session_state["player_search"]
         st.rerun()
     
     player_profile(games, players)
@@ -108,7 +104,7 @@ else:
 
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
-        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"player_search_{st.session_state.search_id}", on_change=lookup(players))
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key="player_search", on_change=lookup(players))
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
