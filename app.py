@@ -69,7 +69,7 @@ def player_profile(data, pdata):
 def show_lookup(pdata):
 
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
-
+    st.write(type(st))
     selected_name = st.selectbox("Search for a player:", names_list)
 
     if selected_name != "--- Select a Player ---":
