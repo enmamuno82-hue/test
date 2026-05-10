@@ -87,9 +87,8 @@ if "player_id" in st.query_params:
 
     if st.button("⬅️ Back"):
         st.write(st.query_params)
-        st.query_params.clear()
-        #st.rerun()
-        st.write(st.query_params)
+        del st.query_params['player_id']
+        st.rerun()
     
     player_profile(games, players)
 else:
