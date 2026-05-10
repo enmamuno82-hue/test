@@ -82,7 +82,7 @@ def show_lookup(pdata):
 
 games = load_data(0)
 players = load_data(1430924563)
-selected_id = None
+global selected_id = None
 
 if "player_id" in st.query_params:
 
