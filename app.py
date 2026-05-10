@@ -90,7 +90,7 @@ games = load_data(0)
 players = load_data(1430924563)
 
 if "player_id" in st.query_params:
-
+    st.write(f"player_search_{st.session_state.search_id}")
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"player_search_{st.session_state.search_id}", on_change=lookup(players))
