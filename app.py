@@ -19,6 +19,7 @@ def create_standings(data, pdata):
             col.remove(c)
     standings = standings[col].reset_index()
 
+    standings['Player'] = pdata['Name']
 
     standings['GP'] = standings[col].sum(axis=1)
     standings['Win %'] = (standings['w'] / standings['GP']).round(3)
