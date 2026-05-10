@@ -94,6 +94,7 @@ if "player_id" in st.query_params:
 
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
+        st.session_state.pop("player_search", None)
         st.rerun()
     
     player_profile(games, players)
