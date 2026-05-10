@@ -23,7 +23,7 @@ def create_standings(data, pdata):
 
     col.remove('PlayerID')
     standings['GP'] = standings[col].sum(axis=1)
-    standings['Win %'] = (standings['w'] / standings['GP']).round(3)
+    standings['Win %'] = (standings['w'] / standings['GP']) * 10
 
     forder = []
     if 'w' in col:
@@ -48,7 +48,6 @@ def create_standings(data, pdata):
         standings,
         column_config={
             "PlayerID": None,
-            "Win %": st.column_config.NumberColumn(format="%.3f")
         },
         hide_index=True,
     )
