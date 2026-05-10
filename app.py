@@ -91,8 +91,8 @@ if "player_id" in st.query_params:
     
     player_profile(games, players)
 else:
-
-    show_lookup(players)
+    with sidebar:
+        show_lookup(players)
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
