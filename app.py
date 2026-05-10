@@ -1,4 +1,6 @@
 import streamlit as st
+st.write(f"Streamlit version: {st.__version__}")
+st.write(f"Where is st coming from? {st.__file__}")
 selected_name = st.selectbox("Search for a player:")
 import pandas as pd
 
@@ -108,4 +110,4 @@ else:
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
-    
+
