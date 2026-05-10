@@ -79,7 +79,7 @@ def show_lookup(pdata):
         selected_id = pdata[pdata['Name'] == pname]['PlayerID'].values[0]
                 
         st.query_params["player_id"] = selected_id
-        pname = selected_name.split()[0]
+        pname = name
         st.rerun()
 
 games = load_data(0)
