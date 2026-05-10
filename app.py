@@ -19,10 +19,7 @@ def create_standings(data, pdata):
             col.remove(c)
     standings = standings[col].reset_index()
 
-    standings = standings.merge(pdata[['PlayerID', 'Name']], on='PlayerID', how='left')
-    standings['Player'] = standings['Name']
 
-    col.remove('PlayerID')
     standings['GP'] = standings[col].sum(axis=1)
     standings['Win %'] = (standings['w'] / standings['GP']).round(3)
 
@@ -93,9 +90,10 @@ if "player_id" in st.query_params:
     
     player_profile(games, players)
 else:
-    show_lookup(players)
-    st.title("Chess Tournament Leaderboard")
 
+    show_lookup(players)
+
+    st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
 
     
