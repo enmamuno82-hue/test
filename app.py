@@ -91,8 +91,6 @@ if "player_id" in st.query_params:
     
     player_profile(games, players)
 
-    with st.sidebar:
-        show_lookup(players)
 
 else:
 
