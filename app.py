@@ -1,7 +1,7 @@
 import streamlit as st
 st.write(f"Streamlit version: {st.__version__}")
 st.write(f"Where is st coming from? {st.__file__}")
-selected_name = st.selectbox("Search for a player:")
+selected_name = st.selectbox("Select a Player", ["Player A", "Player B", "Player C"])
 import pandas as pd
 
 @st.cache_data
