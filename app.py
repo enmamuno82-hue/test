@@ -100,10 +100,10 @@ if "player_id" in st.query_params:
 
 else:
 
-    st.set_page_config(initial_sidebar_state="collapsed")
     
-    with st.sidebar:
-        show_lookup(players)
 
+    with st.sidebar:
+        st.set_page_config(initial_sidebar_state="collapsed")
+        show_lookup(players)
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
