@@ -68,7 +68,6 @@ def player_profile(data, pdata):
 
 def show_lookup(pdata):
 
-
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
 
     selected_name = st.selectbox("Search for a player:", names_list)
@@ -83,7 +82,7 @@ def show_lookup(pdata):
 
 games = load_data(0)
 players = load_data(1430924563)
-
+selected_id = None
 
 if "player_id" in st.query_params:
 
