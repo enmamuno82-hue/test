@@ -100,6 +100,8 @@ if "player_id" in st.query_params:
 
 else:
 
+    st.set_page_config(initial_sidebar_state="collapsed")
+    
     with st.sidebar:
         show_lookup(players)
 
