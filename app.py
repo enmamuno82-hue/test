@@ -75,7 +75,7 @@ def show_lookup(pdata):
     if selected_name != "--- Select a Player ---":
         
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
-        
+            st.write("weirdf")
         if "player_id" not in st.query_params:
             st.query_params["player_id"] = selected_id
             st.write("stnd")
