@@ -79,12 +79,12 @@ def show_lookup(pdata):
         selected_id = pdata[pdata['Name'] == name]['PlayerID'].values[0]
                 
         st.query_params["player_id"] = selected_id
-        pname = name
+        st.selectbox.clear()
         st.rerun()
 
 games = load_data(0)
 players = load_data(1430924563)
-pname
+pname = ""
 
 if "player_id" in st.query_params:
 
