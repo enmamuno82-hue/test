@@ -73,9 +73,9 @@ def show_lookup(pdata):
 
     selected_name = st.selectbox("Search for a player:", names_list)
     name = selected_name.split()[0]
-
+    st.write(name + " " + pname)
     if selected_name != "--- Select a Player ---" and name != pname:
-        print(name + " " + pname)
+        
         selected_id = pdata[pdata['Name'] == name]['PlayerID'].values[0]
                 
         st.query_params["player_id"] = selected_id
@@ -101,9 +101,7 @@ if "player_id" in st.query_params:
 else:
 
     with st.sidebar:
-        
         show_lookup(players)
-    st.set_page_config(initial_sidebar_state="collapsed")
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
