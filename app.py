@@ -75,7 +75,7 @@ def show_lookup(pdata):
     name = selected_name.split()[0]
 
     if selected_name != "--- Select a Player ---" and name != pname:
-
+        print(name + " " + pname)
         selected_id = pdata[pdata['Name'] == name]['PlayerID'].values[0]
                 
         st.query_params["player_id"] = selected_id
