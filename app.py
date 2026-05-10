@@ -77,6 +77,7 @@ def show_lookup(pdata):
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
         
         st.query_params["player_id"] = selected_id
+        st.session_state.player_search = "-- Select a Player --"
         st.rerun()
 
 
