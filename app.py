@@ -76,7 +76,7 @@ def show_lookup(pdata):
 
     if selected_name != "--- Select a Player ---" and name != pname:
 
-        selected_id = pdata[pdata['Name'] == pname]['PlayerID'].values[0]
+        selected_id = pdata[pdata['Name'] == name]['PlayerID'].values[0]
                 
         st.query_params["player_id"] = selected_id
         pname = name
@@ -84,7 +84,7 @@ def show_lookup(pdata):
 
 games = load_data(0)
 players = load_data(1430924563)
-pname = ""
+pname = None
 
 if "player_id" in st.query_params:
 
