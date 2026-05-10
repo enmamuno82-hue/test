@@ -108,3 +108,4 @@ else:
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
+    
