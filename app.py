@@ -68,7 +68,7 @@ def player_profile(data, pdata):
 
 def lookup(pdata):
 
-    selected_name = st.session_state.get("player_search 1")
+    selected_name = st.session_state.get("player_search")
 
     if selected_name is None:
         return
@@ -79,7 +79,7 @@ def lookup(pdata):
         
         st.query_params["player_id"] = selected_id
 
-        st.session_state.pop("player_search 1", None)
+        st.session_state.pop("player_search", None)
 
 
 games = load_data(0)
@@ -88,7 +88,8 @@ players = load_data(1430924563)
 if "player_id" in st.query_params:
 
     with st.sidebar:
-        show_lookup(players)
+        names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key="player_search", on_change=lookup(players))
 
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
@@ -101,7 +102,7 @@ else:
 
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
-        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key="player_search 1", on_change=lookup(players))
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key="player_search", on_change=lookup(players))
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
