@@ -86,8 +86,10 @@ players = load_data(1430924563)
 if "player_id" in st.query_params:
 
     if st.button("⬅️ Back"):
-        st.query_params.remove("player_id")
-        st.rerun()
+        st.write(st.query_params)
+        st.query_params.clear()
+        #st.rerun()
+        st.write(st.query_params)
     
     player_profile(games, players)
 else:
