@@ -77,6 +77,7 @@ def show_lookup(pdata):
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
             
         st.query_params["player_id"] = selected_id
+        selected_name = "--- Select a Player ---"
         st.rerun()
 
 games = load_data(0)
@@ -85,12 +86,14 @@ players = load_data(1430924563)
 
 if "player_id" in st.query_params:
 
+    with st.sidebar:
+        show_lookup(players)
+
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
         st.rerun()
     
     player_profile(games, players)
-
 
 else:
 
