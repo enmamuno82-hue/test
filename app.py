@@ -97,6 +97,7 @@ if "player_id" in st.query_params:
 
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
+        st.session_state.pop(f"player_search_{st.session_state.search_id}", None)
         st.session_state.search_id += 1
         st.rerun()
     
