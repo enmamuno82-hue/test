@@ -1,4 +1,5 @@
 import streamlit as st
+selected_name = st.selectbox("Search for a player:")
 import pandas as pd
 
 @st.cache_data
