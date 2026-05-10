@@ -68,7 +68,7 @@ def player_profile(data, pdata):
 
 def lookup(pdata):
 
-    choice = st.session_state.player_search
+    selected_name = st.session_state.player_search
 
     if selected_name != "--- Select a Player ---":
         
