@@ -85,8 +85,6 @@ players = load_data(1430924563)
 
 if "player_id" in st.query_params:
 
-    with st.sidebar:
-        show_lookup(players)
 
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
@@ -100,8 +98,3 @@ else:
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
-
-    
-    
-
-    
