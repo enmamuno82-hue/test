@@ -80,6 +80,7 @@ def lookup(pdata):
         st.query_params["player_id"] = selected_id
 
         st.session_state.pop("player_search", None)
+        st.rerun
 
 
 games = load_data(0)
