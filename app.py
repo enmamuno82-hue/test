@@ -78,9 +78,11 @@ def show_lookup(pdata):
         
         if "player_id" not in st.query_params:
             st.query_params["player_id"] = selected_id
+            st.write("stnd")
             st.rerun()
         elif st.query_params["player_id"] != selected_id:
             st.query_params["player_id"] = selected_id
+            st.write("pla")
             st.rerun()
         else:
             st.write("neither")
