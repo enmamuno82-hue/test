@@ -87,7 +87,7 @@ players = load_data(1430924563)
 if "player_id" in st.query_params:
     current_pid = st.query_params.get("player_id")
 
-    st.write("player_search")
+    st.write(f"search_{current_pid}")
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{current_pid}", on_change=lookup(players, current_pid))
