@@ -82,6 +82,8 @@ def show_lookup(pdata):
         elif st.query_params["player_id"] != selected_id:
             st.query_params["player_id"] = selected_id
             st.rerun()
+        else:
+            st.write("neither")
 
 
 games = load_data(0)
