@@ -69,9 +69,8 @@ def player_profile(data, pdata):
 def lookup(pdata):
 
     selected_name = st.session_state.get("player_search 1")
-    st.write(selected_name)
 
-    if selected_name != "--- Select a Player ---":
+    if selected_name != "--- Select a Player ---" or selected_name != None:
         
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID']
         
