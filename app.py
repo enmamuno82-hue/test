@@ -88,14 +88,15 @@ pname = None
 
 if "player_id" in st.query_params:
 
+    with st.sidebar:
+        show_lookup(players)
+
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
         st.rerun()
     
     player_profile(games, players)
 
-    with st.sidebar:
-        show_lookup(players)
 
 else:
 
