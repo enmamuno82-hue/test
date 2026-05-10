@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-st.write(st.__file__)
+
 @st.cache_data
 def load_data(gid):
     sheet_ID = "133p_AZdXgB3YUstAlOrn25tOJuplWbuGkx9KYwW9O7M"
