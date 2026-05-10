@@ -72,7 +72,7 @@ def lookup(pdata):
 
     if selected_name != "--- Select a Player ---":
         
-        selected_id = pdata[pdata['Name'] == selected_name]['PlayerID'].values[0]
+        selected_id = pdata[pdata['Name'] == selected_name]['PlayerID']
         
         st.query_params["player_id"] = selected_id
 
