@@ -76,7 +76,7 @@ def show_lookup(pdata):
         
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
         
-        if ["player_id"] not in st.query_params:
+        if "player_id" not in st.query_params:
             st.query_params["player_id"] = selected_id
             st.rerun()
         elif st.query_params["player_id"] != selected_id:
