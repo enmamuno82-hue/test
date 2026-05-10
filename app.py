@@ -85,8 +85,8 @@ players = load_data(1430924563)
 
 if "player_id" in st.query_params:
 
-    if st.button("⬅️ Back to Leaderboard"):
-        st.query_params.clear()
+    if st.button("⬅️ Back"):
+        st.query_params.remove("player_id")
         st.rerun()
     
     player_profile(games, players)
