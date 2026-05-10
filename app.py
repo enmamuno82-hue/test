@@ -67,25 +67,24 @@ def player_profile(data, pdata):
         st.error("Player not found.")
 
 def show_lookup(pdata):
-
-    global selected_id
+    global pname
 
     names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in pdata.iterrows()]
 
     selected_name = st.selectbox("Search for a player:", names_list)
+    name = selected_name.split()[0]
 
-    if selected_name != "--- Select a Player ---":
-        if selected_id != st.query_params["player_id"][0]:
+    if selected_name != "--- Select a Player ---" and name != pname:
 
-            selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID'].values[0]
+        selected_id = pdata[pdata['Name'] == pname]['PlayerID'].values[0]
                 
-            st.query_params["player_id"] = selected_id
-            
-            st.rerun()
+        st.query_params["player_id"] = selected_id
+        pname = selected_name.split()[0]
+        st.rerun()
 
 games = load_data(0)
 players = load_data(1430924563)
-selected_id = None
+pname = None
 
 if "player_id" in st.query_params:
 
