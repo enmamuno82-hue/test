@@ -68,7 +68,7 @@ def player_profile(data, pdata):
 
 def lookup(pdata):
     st.write(f"player_{lid}")
-    selected_name = st.session_state.get(f"player_{lid}")
+    selected_name = st.session_state.get(f"search_{lid}")
 
     if selected_name is None:
         return
