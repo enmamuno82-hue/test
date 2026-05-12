@@ -76,7 +76,6 @@ def lookup(pdata):
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID']
         
         st.query_params["player_id"] = selected_id
-        st.write(st.query_params["search_id"])
         del st.session_state[f"player_{lid}"]
         st.rerun()
 
