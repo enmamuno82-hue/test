@@ -76,7 +76,7 @@ def lookup(pdata):
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID']
         
         st.query_params["player_id"] = selected_id
-        del st.session_state[f"player_{lid}"]
+        del st.session_state[f"select_{lid}"]
         st.rerun()
 
 if "look" not in st.query_params:
