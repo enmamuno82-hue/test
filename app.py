@@ -86,7 +86,7 @@ if "look" not in st.query_params:
     lid = 0
     st.rerun()
 
-lid =+ 1
+lid = 1 + lid
 st.write(lid)
 games = load_data(0)
 players = load_data(1430924563)
