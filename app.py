@@ -87,7 +87,7 @@ if "look" not in st.query_params:
     st.rerun()
 
 lid =+ 1
-
+st.write(lid)
 games = load_data(0)
 players = load_data(1430924563)
 
@@ -102,7 +102,6 @@ if "player_id" in st.query_params:
         del st.query_params['player_id']
         st.session_state[f"search_{lid}"] = "--- Select a Player ---"
         del st.session_state[f"search_{lid}"]
-        input("wait")
         st.rerun()
     
     player_profile(games, players)
