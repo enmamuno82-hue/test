@@ -78,6 +78,7 @@ def lookup(pdata):
         
         st.query_params["player_id"] = selected_id
         st.write(st.query_params["player_id"])
+        del st.session_state[f"player_{lid}"]
         st.rerun()
 
 if "look" not in st.query_params:
