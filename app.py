@@ -83,6 +83,7 @@ def lookup(pdata):
 
 if "look" not in st.query_params:
     global lid
+    st.write("yes")
     st.query_params["look"] = 1
     lid = 0
     st.rerun()
