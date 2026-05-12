@@ -98,6 +98,7 @@ if "player_id" in st.query_params:
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{lid}", on_change=lookup(players))
 
     if st.button("⬅️ Back"):
+        st.write("what")
         del st.query_params['player_id']
         del st.session_state[f"search_{lid}"]
         st.rerun()
