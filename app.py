@@ -79,10 +79,6 @@ def lookup(pdata, cpid):
         del st.session_state[f"search_{cpid}"]
         st.rerun()
 
-if "look" not in st.query_params:
-    st.write("yes")
-    st.query_params["look"] = 1
-    st.rerun()
 
 games = load_data(0)
 players = load_data(1430924563)
