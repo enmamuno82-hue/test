@@ -67,7 +67,6 @@ def player_profile(data, pdata):
         st.error("Player not found.")
 
 def lookup(pdata):
-    st.write(f"player_{lid}")
     selected_name = st.session_state.get(f"search_{lid}")
 
     if selected_name is None:
