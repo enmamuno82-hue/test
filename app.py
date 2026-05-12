@@ -100,6 +100,7 @@ if "player_id" in st.query_params:
     if st.button("⬅️ Back"):
         st.write("what")
         del st.query_params['player_id']
+        st.session_state[f"search_{lid}"] = "--- Select a Player ---"
         del st.session_state[f"search_{lid}"]
         input("wait")
         st.rerun()
