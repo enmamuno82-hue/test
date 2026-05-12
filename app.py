@@ -101,6 +101,7 @@ if "player_id" in st.query_params:
         st.write("what")
         del st.query_params['player_id']
         del st.session_state[f"search_{lid}"]
+        input()
         st.rerun()
     
     player_profile(games, players)
