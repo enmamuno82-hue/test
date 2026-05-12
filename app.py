@@ -66,9 +66,9 @@ def player_profile(data, pdata):
     else:
         st.error("Player not found.")
 
-def lookup(pdata, ex):
-    st.write("search_" + ex)
-    selected_name = st.session_state.get("player_" + ex)
+def lookup(pdata):
+    st.write(f"player_{lid}")
+    selected_name = st.session_state.get(f"player_{lid}")
 
     if selected_name is None:
         return
@@ -80,17 +80,23 @@ def lookup(pdata, ex):
         st.write(st.query_params["player_id"])
         st.rerun()
 
+if "look" not in st.query_params:
+    global lid
+    st.query_params["look"] = 1
+    lid = 0
+    st.rerun()
+
+lid =+ 1
 
 games = load_data(0)
 players = load_data(1430924563)
 
 if "player_id" in st.query_params:
-    current_pid = st.query_params.get("player_id")
 
     st.write(f"search_{current_pid}")
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
-        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{current_pid}", on_change=lookup(players, current_pid))
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{lid}", on_change=lookup(players))
 
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
@@ -103,7 +109,7 @@ else:
 
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
-        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key="player_home", on_change=lookup(players, "home"))
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{lid}", on_change=lookup(players))
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
