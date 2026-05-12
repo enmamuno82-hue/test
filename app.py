@@ -66,8 +66,8 @@ def player_profile(data, pdata):
     else:
         st.error("Player not found.")
 
-def lookup(pdata):
-    selected_name = st.session_state.get(f"search_{lid}")
+def lookup(pdata, cpid):
+    selected_name = st.session_state.get(f"search_{cpid}")
 
     if selected_name is None:
         return
@@ -76,42 +76,37 @@ def lookup(pdata):
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID']
         
         st.query_params["player_id"] = selected_id
-        del st.session_state[f"search_{lid}"]
+        del st.session_state[f"search_{cpid}"]
         st.rerun()
 
 if "look" not in st.query_params:
-    global lid
     st.write("yes")
     st.query_params["look"] = 1
-    lid = 0
     st.rerun()
 
-lid = 1 + lid
-st.write(lid)
 games = load_data(0)
 players = load_data(1430924563)
 
 if "player_id" in st.query_params:
+    cpid = st.query_params["player_id"]
 
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
-        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{lid}", on_change=lookup(players))
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{cpid}", on_change=lookup(players, cpid))
 
     if st.button("⬅️ Back"):
         st.write("what")
         del st.query_params['player_id']
-        st.session_state[f"search_{lid}"] = "--- Select a Player ---"
-        del st.session_state[f"search_{lid}"]
+        del st.session_state[f"search_{cpid}"]
         st.rerun()
     
     player_profile(games, players)
 
 
 else:
-
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
-        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{lid}", on_change=lookup(players))
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_h", on_change=lookup(players, "h"))
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
