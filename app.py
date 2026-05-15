@@ -115,5 +115,5 @@ else:
     st.write(filtered)
 
     st.title("Chess Tournament Leaderboard")
-    standings = create_standings(games, players)
+    standings = create_standings(filtered, players)
 
