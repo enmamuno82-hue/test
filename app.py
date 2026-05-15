@@ -126,6 +126,6 @@ else:
 
 
     st.title("Chess Tournament Leaderboard")
-    st.tittle(season['Seasonname'].iat[0])
+    st.title(season['Seasonname'].iat[0])
     standings = create_standings(filtered, players)
 
