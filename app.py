@@ -98,7 +98,6 @@ if "player_id" in st.query_params:
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{cpid}", on_change=lookup(players, cpid))
 
     if st.button("⬅️ Back"):
-        st.write("what")
         del st.query_params['player_id']
         del st.session_state[f"search_{cpid}"]
         st.rerun()
@@ -111,7 +110,7 @@ else:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_h", on_change=lookup(players, "h"))
 
-    regular = games['Game' == "regular"]
+    regular = games[games['Game'] == "regular"]
     filtered = find_seas(regular)
     st.write(filtered)
 
