@@ -32,7 +32,7 @@ def create_standings(data, pdata):
     for num in ids:
         name = pdata[pdata['PlayerID'] == num]
         nids.append(pdata['Name'].iat[0])
-    st.write(nids)
+    st.write(ids)
     standings['Player'] = nids
 
     col.remove('PlayerID')
