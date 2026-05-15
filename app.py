@@ -26,7 +26,7 @@ def create_standings(data, pdata):
             col.remove(c)
     standings = standings[col].reset_index()
 
-    ids = standings['PlayerID']
+    ids = standings['PlayerID'].tolist()
     nids = []
 
     for num in ids:
