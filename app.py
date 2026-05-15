@@ -14,7 +14,7 @@ def find_seas(data):
 
     season = filtered['Season'].iat[0]
 
-    return filtered['Season' == season]
+    return filtered[filtered['Season'] == season]
 
 def create_standings(data, pdata):
     standings = data.groupby(['PlayerID', 'Outcome']).size().unstack(fill_value=0)
