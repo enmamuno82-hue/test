@@ -96,6 +96,7 @@ def lookup(pdata, cpid):
 
 games = load_data(0)
 players = load_data(1430924563)
+seasons = load_data(985399788)
 
 if "player_id" in st.query_params:
     cpid = st.query_params["player_id"]
@@ -120,6 +121,11 @@ else:
     regular = games[games['Game'] == "regular"]
     filtered = find_seas(regular)
 
+    season = filetered['Season'].iat[0]
+    sfilt = seasons[seasons['Seasonnum'] == season]
+
+
     st.title("Chess Tournament Leaderboard")
+    st.tittle(season['Seasonname'].iat[0])
     standings = create_standings(filtered, players)
 
