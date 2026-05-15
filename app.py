@@ -12,7 +12,7 @@ def load_data(gid):
 def find_seas(data):
     filtered = data.sort_values(by='Season', ascending=False)
 
-    season = filtered[0]['Season']
+    season = filtered['Season'].iat[0]
 
     return filtered['Season' == season]
 
