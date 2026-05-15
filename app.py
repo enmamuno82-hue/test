@@ -32,7 +32,7 @@ def create_standings(data, pdata):
     for num in ids:
         name = pdata[pdata['PlayerID'] == num]
         nids.append(name['Name'].iat[0])
-        
+
     standings['Player'] = nids
 
     col.remove('PlayerID')
@@ -119,7 +119,6 @@ else:
 
     regular = games[games['Game'] == "regular"]
     filtered = find_seas(regular)
-    st.write(filtered)
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(filtered, players)
