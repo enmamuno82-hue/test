@@ -26,7 +26,14 @@ def create_standings(data, pdata):
             col.remove(c)
     standings = standings[col].reset_index()
 
-    standings['Player'] = pdata['Name']
+    ids = standings['PlayerID']
+    nids = []
+
+    for num in ids:
+        name = pdata[pdata['PlayerID'] == num]
+        nids.append(pdata['Name'].iat[0])
+
+    standings['Player'] = nids
 
     col.remove('PlayerID')
     standings['GP'] = standings[col].sum(axis=1)
