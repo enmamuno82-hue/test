@@ -9,6 +9,13 @@ def load_data(gid):
     data = pd.read_csv(url)
     return data
 
+def find_seas(data):
+    filtered = data.sort_values(by='Season', ascending=False)
+
+    season = filtered[0]['Season']
+
+    return filtered['Season' == season]
+
 def create_standings(data, pdata):
     standings = data.groupby(['PlayerID', 'Outcome']).size().unstack(fill_value=0)
     standings = standings.reset_index()
@@ -103,6 +110,10 @@ else:
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_h", on_change=lookup(players, "h"))
+
+    regular = games['Game' == "regular"]
+    filtered = find_seas(regular)
+    st.write(filtered)
 
     st.title("Chess Tournament Leaderboard")
     standings = create_standings(games, players)
