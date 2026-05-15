@@ -121,7 +121,7 @@ else:
     regular = games[games['Game'] == "regular"]
     filtered = find_seas(regular)
 
-    season = filetered['Season'].iat[0]
+    season = filtered['Season'].iat[0]
     sfilt = seasons[seasons['Seasonnum'] == season]
 
 
