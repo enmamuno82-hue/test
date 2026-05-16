@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+if "page" not in st,query_params:
+    st.query_params['page'] = "standings"
+
 @st.cache_data
 def load_data(gid):
     sheet_ID = "133p_AZdXgB3YUstAlOrn25tOJuplWbuGkx9KYwW9O7M"
@@ -96,6 +99,11 @@ def lookup(pdata, cpid):
 def sidebr():
 
     if st.button("Standings"):
+        if "player_id" in st.query_params:
+            del st.query_params['player_id']
+        st.rerun()
+
+    if st.button("Games"):
         if "player_id" in st.query_params:
             del st.query_params['player_id']
         st.rerun()
