@@ -91,8 +91,9 @@ def lookup(pdata, cpid):
 
     if selected_name != "--- Select a Player ---":
         selected_id = pdata[pdata['Name'] == selected_name.split()[0]]['PlayerID']
-        
-        st.query_params["player_id"] = selected_id
+
+        st.query_params['page'] = "player"
+        st.query_params['player_id'] = selected_id
         del st.session_state[f"search_{cpid}"]
         st.rerun()
 
@@ -101,11 +102,13 @@ def sidebr():
     if st.button("Standings"):
         if "player_id" in st.query_params:
             del st.query_params['player_id']
+        st.query_params['page'] = "standings"
         st.rerun()
 
     if st.button("Games"):
         if "player_id" in st.query_params:
             del st.query_params['player_id']
+            st.query_params['page'] = "games"
         st.rerun()
 
 games = load_data(0)
@@ -128,7 +131,7 @@ if "player_id" in st.query_params:
     player_profile(games, players)
 
 
-else:
+elif st.query_params['page'] == "standings":
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_h", on_change=lookup(players, "h"))
@@ -144,4 +147,12 @@ else:
     st.title("Chess Tournament Standings")
     st.title(sfilt['Seasonname'].iat[0])
     standings = create_standings(filtered, players)
+
+elif st.query_params['page'] == "games":
+    with st.sidebar:
+        names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
+        selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_g", on_change=lookup(players, "g"))
+        sidebr()
+
+    st.tittle("Chess Tournament Matches")
 
