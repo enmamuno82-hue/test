@@ -93,6 +93,11 @@ def lookup(pdata, cpid):
         del st.session_state[f"search_{cpid}"]
         st.rerun()
 
+def sidebr():
+
+    if st.button("Standings"):
+        del st.query_params['player_id']
+        st.rerun()
 
 games = load_data(0)
 players = load_data(1430924563)
@@ -104,6 +109,7 @@ if "player_id" in st.query_params:
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_{cpid}", on_change=lookup(players, cpid))
+        sidebr()
 
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
@@ -117,6 +123,7 @@ else:
     with st.sidebar:
         names_list = ["--- Select a Player ---"] + [f"{row['Name']} {row['PlayerID']}" for _, row in players.iterrows()]
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_h", on_change=lookup(players, "h"))
+        sidebr()
 
     regular = games[games['Game'] == "regular"]
     filtered = find_seas(regular)
