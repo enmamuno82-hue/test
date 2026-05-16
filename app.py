@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-if "page" not in st,query_params:
+if "page" not in st.query_params:
     st.query_params['page'] = "standings"
 
 @st.cache_data
