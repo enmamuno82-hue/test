@@ -141,7 +141,7 @@ else:
     sfilt = seasons[seasons['Seasonnum'] == season]
 
 
-    st.title("Chess Tournament Leaderboard")
+    st.title("Chess Tournament Standings")
     st.title(sfilt['Seasonname'].iat[0])
     standings = create_standings(filtered, players)
 
