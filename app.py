@@ -96,7 +96,8 @@ def lookup(pdata, cpid):
 def sidebr():
 
     if st.button("Standings"):
-        del st.query_params['player_id']
+        if "player_id" in st.query_params:
+            del st.query_params['player_id']
         st.rerun()
 
 games = load_data(0)
