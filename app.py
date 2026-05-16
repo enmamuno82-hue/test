@@ -108,7 +108,7 @@ def sidebr():
     if st.button("Games"):
         if "player_id" in st.query_params:
             del st.query_params['player_id']
-            st.query_params['page'] = "games"
+        st.query_params['page'] = "games"
         st.rerun()
 
 games = load_data(0)
