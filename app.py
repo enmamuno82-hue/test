@@ -69,6 +69,8 @@ def create_standings(data, pdata):
         hide_index=True,
     )
 
+def create_games(data, pdata):
+    
 
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
@@ -154,5 +156,12 @@ elif st.query_params['page'] == "games":
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_g", on_change=lookup(players, "g"))
         sidebr()
 
+    regular = games[games['Game'] == "regular"]
+    filtered = find_seas(regular)
+
+    season = filtered['Season'].iat[0]
+    sfilt = seasons[seasons['Seasonnum'] == season]
+
     st.title("Chess Tournament Matches")
+    sgames = create_games[filtered, players]
 
