@@ -94,7 +94,7 @@ def player_profile(data, pdata):
     if not player_row.empty:
         player_name = player_row.iloc[0]['Name']
         st.title(f"👤 {player_name}")
-        col1, col2, col3 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
         with col1:
             st.subheader(pdata['Age'].iat[0].astype(str) + "yrs")
 
