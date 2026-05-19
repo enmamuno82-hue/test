@@ -80,6 +80,8 @@ def create_games(data, pdata):
     bgames = bgames[border].reset_index(drop=True)
 
     wgames[' '] = "White vs Black"
+    wgames['Outcome2'] = bgames['Outcome']
+    wgames['Player2'] = bgames['Player']
 
     st.dataframe(wgames,hide_index=True)
     st.dataframe(bgames,hide_index=True)
