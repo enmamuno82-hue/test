@@ -163,5 +163,5 @@ elif st.query_params['page'] == "games":
     sfilt = seasons[seasons['Seasonnum'] == season]
 
     st.title("Chess Tournament Matches")
-    sgames = create_games[filtered, players]
+    sgames = create_games(filtered, players)
 
