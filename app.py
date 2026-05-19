@@ -73,6 +73,8 @@ def create_games(data, pdata):
     wgames = data[data['Color'] == "white"]
     st.write(wgames)
 
+    order = ['Date', 'what']
+
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
 
