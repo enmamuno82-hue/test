@@ -103,6 +103,11 @@ def player_profile(data, pdata):
         
         with col3:
              st.subheader(player_row['PlayerID'].iat[0].astype(str) + "ID")
+    
+        st.subheader("All Time Statistics")
+        data = data[data['PlayerID'].astype(str) == str(pid)]
+        what = data.groupby(['Outcome']).size()
+        st.write(what)
 
     else:
         st.error("Player not found.")
