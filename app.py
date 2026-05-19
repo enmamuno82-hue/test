@@ -93,10 +93,12 @@ def player_profile(data, pdata):
 
     if not player_row.empty:
         player_name = player_row.iloc[0]['Name']
-        with right:
+        col1, col2 = st.columns(2)
+        with col1:
             st.title(f"👤 {player_name}")
 
-        
+        with col2 = st.write("what")
+
     else:
         st.error("Player not found.")
 
