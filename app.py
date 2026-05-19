@@ -70,7 +70,8 @@ def create_standings(data, pdata):
     )
 
 def create_games(data, pdata):
-    pass
+    wgames = data[data['Color'] == "white"]
+    st.write(wgames)
 
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
