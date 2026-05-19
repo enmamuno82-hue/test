@@ -73,11 +73,13 @@ def create_games(data, pdata):
     wgames = data[data['Color'] == "white"]
     bgames = data[data['Color'] == "black"]
 
-    worder = ['Date', 'Game', 'Player', 'Color', 'Outcome', 'GameID']
-    border = ['Player', 'Color', 'Outcome']
+    worder = ['Date', 'Game', 'Player', 'Outcome']
+    border = ['Player', 'Outcome']
 
     wgames = wgames[worder].reset_index(drop=True)
     bgames = bgames[border].reset_index(drop=True)
+
+    wgames[' '] = "White vs Black"
 
     st.dataframe(wgames,hide_index=True)
     st.dataframe(bgames,hide_index=True)
