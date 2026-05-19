@@ -106,7 +106,7 @@ def player_profile(data, pdata):
     
         st.subheader("All Time Statistics")
         data = data[data['PlayerID'].astype(str) == str(pid)]
-        what = data.groupby(['Outcome']).size()
+        what = data.groupby(['PlayerID', 'Outcome']).size()
         st.write(what)
 
     else:
