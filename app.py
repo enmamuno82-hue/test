@@ -70,7 +70,7 @@ def create_standings(data, pdata):
     )
 
 def create_games(data, pdata):
-    
+    pass
 
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
