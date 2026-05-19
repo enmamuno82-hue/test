@@ -73,7 +73,9 @@ def create_games(data, pdata):
     wgames = data[data['Color'] == "white"]
     st.write(wgames)
 
-    order = ['Date', 'what']
+    order = ['Date', 'Game', 'PlayerID', 'Color', 'Outcome', 'GameID']
+
+    wgames = order
 
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
@@ -165,5 +167,6 @@ elif st.query_params['page'] == "games":
     sfilt = seasons[seasons['Seasonnum'] == season]
 
     st.title("Chess Tournament Matches")
+    st.title(sfilt['Seasonname'].iat[0])
     sgames = create_games(filtered, players)
 
