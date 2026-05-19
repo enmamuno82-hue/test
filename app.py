@@ -96,13 +96,13 @@ def player_profile(data, pdata):
         st.title(f"👤 {player_name}")
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.subheader(pdata['Age'].iat[0].astype(str) + "yrs")
+            st.subheader(player_row['Age'].iat[0].astype(str) + "yrs")
 
         with col2:
-           st.subheader(pdata['Grade'].iat[0].astype(str) + "th")
+           st.subheader(player_row['Grade'].iat[0].astype(str) + "th")
         
         with col3:
-             st.subheader(pdata['PlayerID'].iat[0].astype(str) + "ID")
+             st.subheader(player_row['PlayerID'].iat[0].astype(str) + "ID")
 
     else:
         st.error("Player not found.")
