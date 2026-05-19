@@ -74,7 +74,12 @@ def create_games(data, pdata):
 
     order = ['Date', 'Game', 'PlayerID', 'Color', 'Outcome', 'GameID']
 
-    st.write(wgames[order].reset_index(drop=True))
+    wgames = wgames[order].reset_index(drop=True)
+
+    st.dataframe(
+        wgames,
+        hide_index=True,
+    )
 
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
