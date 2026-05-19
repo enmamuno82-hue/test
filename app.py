@@ -83,7 +83,7 @@ def create_games(data, pdata):
     wgames['Outcome2'] = bgames['Outcome']
     wgames['Player2'] = bgames['Player']
 
-    
+
 
     st.dataframe(wgames,hide_index=True)
 
@@ -143,6 +143,7 @@ if "player_id" in st.query_params:
     if st.button("⬅️ Back"):
         del st.query_params['player_id']
         del st.session_state[f"search_{cpid}"]
+        st.query_params['page'] = "standings"
         st.rerun()
     
     player_profile(games, players)
