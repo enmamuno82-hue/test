@@ -97,7 +97,8 @@ def player_profile(data, pdata):
         with col1:
             st.title(f"👤 {player_name}")
 
-        with col2 = st.write("what")
+        with col2:
+            st.write("what")
 
     else:
         st.error("Player not found.")
