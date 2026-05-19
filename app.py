@@ -71,15 +71,16 @@ def create_standings(data, pdata):
 
 def create_games(data, pdata):
     wgames = data[data['Color'] == "white"]
+    bgames = data[data['Color'] == "black"]
 
-    order = ['Date', 'Game', 'PlayerID', 'Color', 'Outcome', 'GameID']
+    worder = ['Date', 'Game', 'Player', 'Color', 'Outcome', 'GameID']
+    border = ['Player', 'Color', 'Outcome']
 
-    wgames = wgames[order].reset_index(drop=True)
+    wgames = wgames[worder].reset_index(drop=True)
+    bgames = bgames[border].reset_index(drop=True)
 
-    st.dataframe(
-        wgames,
-        hide_index=True,
-    )
+    st.dataframe(wgames,hide_index=True)
+    st.dataframe(bgames,hide_index=True)
 
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
