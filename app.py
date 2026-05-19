@@ -98,7 +98,7 @@ def player_profile(data, pdata):
             st.title(f"👤 {player_name}")
 
         with col2:
-            st.header(pdata['Age'].iat[0].astype(str) + "yrs")
+            st.caption(pdata['PlayerID'].iat[0].astype(str) + "ID")
 
     else:
         st.error("Player not found.")
