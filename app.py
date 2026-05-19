@@ -159,8 +159,7 @@ elif st.query_params['page'] == "games":
         selected_name = st.sidebar.selectbox("Player Lookup", options=names_list, index=0,key=f"search_g", on_change=lookup(players, "g"))
         sidebr()
 
-    regular = games[games['Game'] == "regular"]
-    filtered = find_seas(regular)
+    filtered = find_seas(games)
 
     season = filtered['Season'].iat[0]
     sfilt = seasons[seasons['Seasonnum'] == season]
