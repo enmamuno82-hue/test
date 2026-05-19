@@ -83,8 +83,9 @@ def create_games(data, pdata):
     wgames['Outcome2'] = bgames['Outcome']
     wgames['Player2'] = bgames['Player']
 
+    
+
     st.dataframe(wgames,hide_index=True)
-    st.dataframe(bgames,hide_index=True)
 
 def player_profile(data, pdata):
     pid = st.query_params["player_id"]
