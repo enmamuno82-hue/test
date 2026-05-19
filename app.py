@@ -93,12 +93,13 @@ def player_profile(data, pdata):
 
     if not player_row.empty:
         player_name = player_row.iloc[0]['Name']
-        col1, col2 = st.columns(2)
+        st.title(f"👤 {player_name}")
+        col1, col2, col3 = st.columns(2)
         with col1:
-            st.title(f"👤 {player_name}")
+            st.subheader(pdata['Age'].iat[0].astype(str) + "yrs")
 
         with col2:
-            st.caption("\n" + pdata['PlayerID'].iat[0].astype(str) + "ID")
+            st.subheader(pdata['PlayerID'].iat[0].astype(str) + "ID")
 
     else:
         st.error("Player not found.")
