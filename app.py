@@ -83,20 +83,20 @@ def create_games(data, pdata):
     wgames['Outcome2'] = bgames['Outcome']
     wgames['Player2'] = bgames['Player']
 
-
-
     st.dataframe(wgames,hide_index=True)
 
 def player_profile(data, pdata):
+    #calculate how many times they have made the playoffs, semis, finals, tourney wins, all time stats
     pid = st.query_params["player_id"]
 
     player_row = pdata[pdata['PlayerID'].astype(str) == str(pid)]
 
     if not player_row.empty:
         player_name = player_row.iloc[0]['Name']
-        st.title(f"👤 {player_name}")
+        with right:
+            st.title(f"👤 {player_name}")
+
         
-        st.subheader("Game History")
     else:
         st.error("Player not found.")
 
