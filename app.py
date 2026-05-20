@@ -115,7 +115,7 @@ def player_profile(data, pdata):
         stats = stats[col].reset_index()
 
         col.remove('Color')
-        stats['GP'] = stats[col].sum()
+        stats['GP'] = stats[col].sum(axis=1) + stats[col].sum(axis=2)
         st.write(stats)
 
     else:
