@@ -110,9 +110,9 @@ def player_profile(data, pdata):
 
         col = ['Color', 'w', 'l', 't']
         for c in col:
-            if c not in standings.columns:
+            if c not in stats.columns:
                 col.remove(c)
-        standings = standings[col].reset_index()
+        stats = stats[col].reset_index()
 
         col.remove('Color')
         stats['GP'] = stas[col].sum(axis=1)
