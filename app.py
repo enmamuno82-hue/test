@@ -115,8 +115,11 @@ def player_profile(data, pdata):
         stats = stats[col].reset_index()
 
         col.remove('Color')
-        stats['GP'] = stats[col].sum(axis=1) + stats[col].sum(axis=2)
-        st.write(stats)
+
+        wstats = stats[stats['Color'] == "white"]
+        bstats = stats[stats['Color'] == "black"]
+        wstats['GP'] = wstats[col].sum(axis=1)
+        st.write(wstats)
 
     else:
         st.error("Player not found.")
