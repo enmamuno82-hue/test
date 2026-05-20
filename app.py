@@ -106,7 +106,7 @@ def player_profile(data, pdata):
     
         st.subheader("All Time Statistics")
         data = data[data['PlayerID'].astype(str) == str(pid)]
-        stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0)
+        stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
 
         col = ['Color', 'w', 'l', 't']
         for c in col:
