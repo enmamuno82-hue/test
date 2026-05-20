@@ -122,6 +122,7 @@ def player_profile(data, pdata):
         wstats['GP'] = wstats[col].sum(axis=1)
         wstats['GP'] += bstats['GP']
         st.write(wstats)
+        st.write(bstats)
 
     else:
         st.error("Player not found.")
