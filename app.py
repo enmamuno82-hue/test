@@ -118,7 +118,9 @@ def player_profile(data, pdata):
 
         wstats = stats[stats['Color'] == "white"]
         bstats = stats[stats['Color'] == "black"]
-        wstats['GP'] = wstats[col].sum(axis=1) + bstats[col].sum(axis=1)
+        bstats['GP'] = bstats[col].sum(axis=1)
+        wstats['GP'] = wstats[col].sum(axis=1)
+        wstats['GP'] += bstats['GP']
         st.write(wstats)
 
     else:
