@@ -106,8 +106,17 @@ def player_profile(data, pdata):
     
         st.subheader("All Time Statistics")
         data = data[data['PlayerID'].astype(str) == str(pid)]
-        what = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0)
-        st.write(what)
+        stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0)
+
+        col = ['Color', 'w', 'l', 't']
+        for c in col:
+            if c not in standings.columns:
+                col.remove(c)
+        standings = standings[col].reset_index()
+
+        col.remove('Color')
+        stats['GP'] = stas[col].sum(axis=1)
+        st.write(stats)
 
     else:
         st.error("Player not found.")
