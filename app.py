@@ -120,7 +120,7 @@ def player_profile(data, pdata):
         bstats = stats[stats['Color'] == "black"]
         bstats['GP'] = bstats[col].sum(axis=1)
         wstats['GP'] = wstats[col].sum(axis=1)
-        wstats.iloc[0]['GP'] += bstats.iloc[0]['GP']
+        wstats['Total GP'] = bstats.iloc[0]['GP'] + wstats.iloc[0]['GP']
         st.write(wstats)
         st.write(bstats)
 
