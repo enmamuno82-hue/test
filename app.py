@@ -87,7 +87,7 @@ def create_games(data, pdata):
         out = wgames.iloc[i]['Outcome']
         if out == "w":
             wgames.at[i, "Outcome"] = "Win"
-            wgames.at[i, "Outcome2"] = "Win"
+            wgames.at[i, "Outcome2"] = "Loss"
         elif out == "l":
             wgames.at[i, "Outcome"] = "Loss"
             wgames.at[i, "Outcome2"] = "Win"
