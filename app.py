@@ -88,6 +88,12 @@ def create_games(data, pdata):
         if out == "w":
             wgames.at[i, "Outcome"] = "Win"
             wgames.at[i, "Outcome2"] = "Win"
+        elif out == "l":
+            wgames.at[i, "Outcome"] = "Loss"
+            wgames.at[i, "Outcome2"] = "Win"
+        else:
+            wgames.at[i, "Outcome"] = "Draw"
+            wgames.at[i, "Outcome2"] = "Draw"
 
     st.dataframe(wgames,hide_index=True)
 
