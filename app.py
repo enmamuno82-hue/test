@@ -83,7 +83,7 @@ def create_games(data, pdata):
     wgames['Outcome2'] = bgames['Outcome']
     wgames['Player2'] = bgames['Player']
 
-    wgames.at[0, "Outocome"] = "Win
+    wgames.at[0, "Outocome"] = "Win"
 
     st.dataframe(wgames,hide_index=True)
 
