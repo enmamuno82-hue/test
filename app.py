@@ -116,8 +116,13 @@ def player_profile(data, pdata):
         with col3:
              st.subheader(player_row['PlayerID'].iat[0].astype(str) + "ID")
     
-        st.subheader("All Time Statistics")
         data = data[data['PlayerID'].astype(str) == str(pid)]
+        st.subheader("Achievements")
+        ach = data.groupby(['Season', 'Game'])
+        write(ach)
+
+
+        st.subheader("All Time Statistics")
         stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
 
         col = ['Color', 'w', 'l', 't']
