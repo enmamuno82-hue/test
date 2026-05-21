@@ -127,7 +127,7 @@ def player_profile(data, pdata):
         stats = stats[col]
 
         stats.at[2, 'Color'] = "total"
-        if "w" in st.columns:
+        if "w" in stats.columns:
             stats.at[2, 'w'] = stats.iloc[0]['w'] + stats.iloc[1]['w']
             stats = stats.rename(columns={'w': 'Wins'})
             col.remove("w")
