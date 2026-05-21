@@ -124,7 +124,7 @@ def player_profile(data, pdata):
         for c in col:
             if c not in stats.columns:
                 col.remove(c)
-        stats = stats[col].reset_index()
+        stats = stats[col]
 
         st.dataframe(stats,hide_index=True)
 
