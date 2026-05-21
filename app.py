@@ -83,7 +83,7 @@ def create_games(data, pdata):
     wgames['Outcome2'] = bgames['Outcome']
     wgames['Player2'] = bgames['Player']
 
-    for i in len(wgames.columns):
+    for i in len(wgames[' ']):
         pass
 
     wgames.at[0, "Outcome"] = "Win"
