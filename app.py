@@ -119,7 +119,7 @@ def player_profile(data, pdata):
         data = data[data['PlayerID'].astype(str) == str(pid)]
         st.subheader("Achievements")
         ach = data.groupby(['Season', 'Game'])
-        write(ach)
+        st.write(ach)
 
 
         st.subheader("All Time Statistics")
