@@ -145,7 +145,7 @@ def player_profile(data, pdata):
         
         col.remove("Color")
         stats['GP'] = stats[col].sum(axis=1)
-        stats['Win %'] = ((stats['Wins'] / stats['GP']).round() * 100).astype(str) + "%"
+        stats['Win %'] = ((stats['Wins'] / stats['GP']) * 100).round().astype(str) + "%"
 
         st.dataframe(stats,hide_index=True)
 
