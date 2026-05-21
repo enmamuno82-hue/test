@@ -142,6 +142,9 @@ def player_profile(data, pdata):
             stats = stats.rename(columns={'t': 'Draws'})
             col.remove("t")
             col = col + ['Draws']
+        
+        col.remove("Color")
+        stats['GP'] = stats[col].sum(axis=1)
 
         st.dataframe(stats,hide_index=True)
 
