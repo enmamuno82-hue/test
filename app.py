@@ -126,7 +126,7 @@ def player_profile(data, pdata):
                 col.remove(c)
         stats = stats[col].reset_index()
 
-        st.write(stats)
+        st.dataframe(stats,hide_index=True)
 
 
     else:
