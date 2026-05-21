@@ -137,6 +137,11 @@ def player_profile(data, pdata):
             stats = stats.rename(columns={'l': 'Losses'})
             col.remove("l")
             col = col + ['Losses']
+        if "t" in stats.columns:
+            stats.at[2, 't'] = stats.iloc[0]['t'] + stats.iloc[1]['t']
+            stats = stats.rename(columns={'t': 'Draws'})
+            col.remove("t")
+            col = col + ['Draws']
 
         st.dataframe(stats,hide_index=True)
 
