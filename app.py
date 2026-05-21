@@ -126,6 +126,8 @@ def player_profile(data, pdata):
                 col.remove(c)
         stats = stats[col]
 
+        stats.at[2, 'Color'] = "total"
+
         st.dataframe(stats,hide_index=True)
 
 
