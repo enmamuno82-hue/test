@@ -84,9 +84,10 @@ def create_games(data, pdata):
     wgames['Player2'] = bgames['Player']
 
     for i in range (len(wgames[' '])):
-        pass
-
-    wgames.at[0, "Outcome"] = "Win"
+        out = wgames.iloc[i]['Outcome']
+        if out == "w":
+            wgames.at[i, "Outcome"] = "Win"
+            wgames.at[i, "Outcome2"] = "Win"
 
     st.dataframe(wgames,hide_index=True)
 
