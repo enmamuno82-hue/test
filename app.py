@@ -122,6 +122,7 @@ def player_profile(data, pdata):
         ach = plays['Game'].tolist().count("playoffs")
         
         w1 = data[data['Game'] == "playoffs"]
+        w2 = w1[data['Outcome'] == "w"]
 
 
         st.subheader("All Time Statistics")
