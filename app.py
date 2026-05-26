@@ -122,7 +122,7 @@ def player_profile(data, pdata):
         ach = plays['Game'].tolist().count("playoffs")
         
         w1 = data[data['Game'] == "playoffs"]
-        wins = plays['Outcome'].tolist().count("w")
+        wins = w1['Outcome'].tolist().count("w")
         st.write(wins)
 
 
