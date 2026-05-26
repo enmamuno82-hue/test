@@ -120,7 +120,7 @@ def player_profile(data, pdata):
         st.subheader("Achievements")
         plays = data.groupby(['Season', 'Game']).size().reset_index()
         ach = plays['Game']
-        st.write(plays)
+        st.write(ach)
 
 
         st.subheader("All Time Statistics")
