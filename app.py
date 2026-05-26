@@ -129,11 +129,6 @@ def player_profile(data, pdata):
         st.subheader("All Time Statistics")
         stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
 
-        col = ['Color', 'w', 'l', 't']
-        for c in col:
-            if c not in stats.columns:
-                col.remove(c)
-        stats = stats[col]
 
         stats.at[2, 'Color'] = "total"
         if "w" in stats.columns:
