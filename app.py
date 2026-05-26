@@ -130,7 +130,8 @@ def player_profile(data, pdata):
             "In Playoffs": [offs]
         }
 
-        st.write(ach)
+        achi = pd.DataFrame(ach)
+        st.write(achi)
 
         st.subheader("All Time Statistics")
         stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
