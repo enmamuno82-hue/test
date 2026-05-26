@@ -118,7 +118,7 @@ def player_profile(data, pdata):
     
         data = data[data['PlayerID'].astype(str) == str(pid)]
         st.subheader("Achievements")
-        plays = data.groupby(['Season', 'Game']).size()
+        plays = data.groupby(['Season', 'Game']).size().reset_index()
         st.write(plays.columns)
         st.write(plays)
 
