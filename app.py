@@ -139,14 +139,17 @@ def player_profile(data, pdata):
         if "w" in stats.columns:
             stats.at[2, 'w'] = stats.iloc[0]['w'] + stats.iloc[1]['w']
             stats = stats.rename(columns={'w': 'Wins'})
+            col.remove("w")
             col = col + ['Wins']
         if "l" in stats.columns:
             stats.at[2, 'l'] = stats.iloc[0]['l'] + stats.iloc[1]['l']
             stats = stats.rename(columns={'l': 'Losses'})
+            col.remove("l")
             col = col + ['Losses']
         if "t" in stats.columns:
             stats.at[2, 't'] = stats.iloc[0]['t'] + stats.iloc[1]['t']
             stats = stats.rename(columns={'t': 'Draws'})
+            col.remove("t")
             col = col + ['Draws']
 
         col.remove("Color")
