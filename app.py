@@ -135,6 +135,10 @@ def player_profile(data, pdata):
                 col.remove(c)
         stats = stats[col]
 
+        col.remove("Color")
+        stats['GP'] = stats[col].sum(axis=1)
+        stats['Win %'] = ((stats['w'] / stats['GP']) * 100).round().astype(str) + "%"
+
         stats.at[2, 'Color'] = "total"
         if "w" in stats.columns:
             stats.at[2, 'w'] = stats.iloc[0]['w'] + stats.iloc[1]['w']
@@ -152,10 +156,7 @@ def player_profile(data, pdata):
             col.remove("t")
             col = col + ['Draws']
         
-        col.remove("Color")
-        stats['GP'] = stats[col].sum(axis=1)
-        stats['Win %'] = ((stats['Wins'] / stats['GP']) * 100).round().astype(str) + "%"
-
+        
         st.dataframe(stats,hide_index=True)
 
     else:
