@@ -119,12 +119,16 @@ def player_profile(data, pdata):
         data = data[data['PlayerID'].astype(str) == str(pid)]
         st.subheader("Achievements")
         plays = data.groupby(['Season', 'Game']).size().reset_index()
-        ach = plays['Game'].tolist().count("playoffs")
+        offs = plays['Game'].tolist().count("playoffs")
         
         w1 = data[data['Game'] == "playoffs"]
         wins = w1['Outcome'].tolist().count("w")
         st.write(wins)
 
+        ach = {
+            "Playoff Wins": [wins],
+            "In Playoffs": [offs]
+        }
 
         st.subheader("All Time Statistics")
         stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
