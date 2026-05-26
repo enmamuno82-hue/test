@@ -151,10 +151,10 @@ def player_profile(data, pdata):
 
         col.remove("Color")
         stats['GP'] = stats[col].sum(axis=1)
-        if "w" not in stats.columns:
+        if "Wins" not in stats.columns:
             stats['Win %'] = ((0 / stats['GP']) * 100).round().astype(str) + "%"
         else:
-            stats['Win %'] = ((stats['w'] / stats['GP']) * 100).round().astype(str) + "%"
+            stats['Win %'] = ((stats['Wins'] / stats['GP']) * 100).round().astype(str) + "%"
         
         st.dataframe(stats,hide_index=True)
 
