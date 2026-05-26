@@ -132,8 +132,16 @@ def player_profile(data, pdata):
         achi = pd.DataFrame(ach)
         st.write(achi)
 
+        #for i in range(2):
+            #if i == 0:
         st.subheader("All Time Statistics")
         stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
+            #else:
+                #st.subheader("Season Statistics")
+                #d2 = find_seas(data)
+                #stats = d2.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
+
+        
 
         col = ['Color', 'w', 'l', 't']
         for c in col:
