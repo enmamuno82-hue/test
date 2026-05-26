@@ -123,7 +123,7 @@ def player_profile(data, pdata):
         
         w1 = data[data['Game'] == "playoffs"]
         wins = w1['Outcome'].tolist().count("w")
-        st.write(wins)
+        st.write(w1)
 
 
         st.subheader("All Time Statistics")
