@@ -123,6 +123,7 @@ def player_profile(data, pdata):
         
         w1 = data[data['Game'] == "playoffs"]
         w2 = w1[data['Outcome'] == "w"]
+        st.write(w2)
 
 
         st.subheader("All Time Statistics")
