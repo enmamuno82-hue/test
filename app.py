@@ -132,10 +132,10 @@ def player_profile(data, pdata):
         achi = pd.DataFrame(ach)
         st.write(achi)
 
-        #for i in range(2):
+        for i in range(2):
             #if i == 0:
-        st.subheader("All Time Statistics")
-        stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
+            st.subheader("All Time Statistics")
+            stats = data.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
             #else:
                 #st.subheader("Season Statistics")
                 #d2 = find_seas(data)
@@ -143,37 +143,37 @@ def player_profile(data, pdata):
 
         
 
-        col = ['Color', 'w', 'l', 't']
-        for c in col:
-            if c not in stats.columns:
-                col.remove(c)
-        stats = stats[col]
+            col = ['Color', 'w', 'l', 't']
+            for c in col:
+                if c not in stats.columns:
+                    col.remove(c)
+            stats = stats[col]
 
-        stats.at[2, 'Color'] = "total"
-        if "w" in stats.columns:
-            stats.at[2, 'w'] = stats.iloc[0]['w'] + stats.iloc[1]['w']
-            stats = stats.rename(columns={'w': 'Wins'})
-            col.remove("w")
-            col = col + ['Wins']
-        if "l" in stats.columns:
-            stats.at[2, 'l'] = stats.iloc[0]['l'] + stats.iloc[1]['l']
-            stats = stats.rename(columns={'l': 'Losses'})
-            col.remove("l")
-            col = col + ['Losses']
-        if "t" in stats.columns:
-            stats.at[2, 't'] = stats.iloc[0]['t'] + stats.iloc[1]['t']
-            stats = stats.rename(columns={'t': 'Draws'})
-            col.remove("t")
-            col = col + ['Draws']
+            stats.at[2, 'Color'] = "total"
+            if "w" in stats.columns:
+                stats.at[2, 'w'] = stats.iloc[0]['w'] + stats.iloc[1]['w']
+                stats = stats.rename(columns={'w': 'Wins'})
+                col.remove("w")
+                col = col + ['Wins']
+            if "l" in stats.columns:
+                stats.at[2, 'l'] = stats.iloc[0]['l'] + stats.iloc[1]['l']
+                stats = stats.rename(columns={'l': 'Losses'})
+                col.remove("l")
+                col = col + ['Losses']
+            if "t" in stats.columns:
+                stats.at[2, 't'] = stats.iloc[0]['t'] + stats.iloc[1]['t']
+                stats = stats.rename(columns={'t': 'Draws'})
+                col.remove("t")
+                col = col + ['Draws']
 
-        col.remove("Color")
-        stats['GP'] = stats[col].sum(axis=1)
-        if "Wins" not in stats.columns:
-            stats['Win %'] = ((0 / stats['GP']) * 100).round().astype(str) + "%"
-        else:
-            stats['Win %'] = ((stats['Wins'] / stats['GP']) * 100).round().astype(str) + "%"
+            col.remove("Color")
+            stats['GP'] = stats[col].sum(axis=1)
+            if "Wins" not in stats.columns:
+                stats['Win %'] = ((0 / stats['GP']) * 100).round().astype(str) + "%"
+            else:
+                stats['Win %'] = ((stats['Wins'] / stats['GP']) * 100).round().astype(str) + "%"
         
-        st.dataframe(stats,hide_index=True)
+            st.dataframe(stats,hide_index=True)
 
     else:
         st.error("Player not found.")
