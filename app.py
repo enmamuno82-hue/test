@@ -149,7 +149,7 @@ def player_profile(data, pdata):
                 if c not in stats.columns:
                     col.remove(c)
             st.write(stats.columns)
-                st.write(col)   
+            st.write(col)   
             stats = stats[col]
             
 
