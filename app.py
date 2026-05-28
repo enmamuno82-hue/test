@@ -147,8 +147,9 @@ def player_profile(data, pdata):
             for c in col:
                 if c not in stats.columns:
                     col.remove(c)
+            st.write(col)        
             stats = stats[col]
-            st.write(col)
+            
 
             stats.at[2, 'Color'] = "total"
             if "w" in stats.columns:
