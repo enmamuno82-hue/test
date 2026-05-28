@@ -143,7 +143,7 @@ def player_profile(data, pdata):
                 st.write(stats)
 
 
-            col = ['Color', 'w', 'l', 't', "buffer"]
+            col = ['Color', 'w', 'l', "t", "buffer"]
             st.write(col)
             for c in col:
                 st.write(c)
