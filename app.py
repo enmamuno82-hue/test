@@ -144,6 +144,7 @@ def player_profile(data, pdata):
 
 
             col = ['Color', 'w', 'l', 't']
+            st.write(col)
             for c in col:
                 if c not in stats.columns:
                     col.remove(c)
