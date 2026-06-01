@@ -140,7 +140,6 @@ def player_profile(data, pdata):
                 st.subheader("Season Statistics")
                 d2 = find_seas(data)
                 stats = d2.groupby(['Color', 'Outcome']).size().unstack(fill_value=0).reset_index()
-                st.write(stats)
 
 
             colt = ['Color', 'w', 'l', "t"]
