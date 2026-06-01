@@ -212,6 +212,7 @@ def sidebr():
 games = load_data(0)
 players = load_data(1430924563)
 seasons = load_data(985399788)
+offst = load_data(631038017)
 
 if "player_id" in st.query_params:
     cpid = st.query_params["player_id"]
@@ -246,6 +247,8 @@ elif st.query_params['page'] == "standings":
     st.title("Chess Tournament Standings")
     st.title(sfilt['Seasonname'].iat[0])
     standings = create_standings(filtered, players)
+
+    st.write(offst)
 
 elif st.query_params['page'] == "games":
     with st.sidebar:
