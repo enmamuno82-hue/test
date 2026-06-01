@@ -131,12 +131,12 @@ def player_profile(data, pdata, ofdata):
                 ofdata.at[i, 'Matches'] = 2
             else:
                 ofdata.at[i, 'Matches'] = 3
-        
-        first = ofdata['Matches'].tolist().count(1)
 
         ofdata1 = ofdata[ofdata['PlayerID1'].astype(str) == str(pid)]
         ofdata2 = ofdata[ofdata['PlayerID2'].astype(str) == str(pid)]
 
+        first = ofdata1['Matches'].tolist().count(1) + ofdata2['Matches'].tolist().count(1)
+        
         st.write(first)
         st.write(ofdata1)
         st.write(ofdata2)
