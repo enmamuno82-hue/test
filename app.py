@@ -145,17 +145,11 @@ def player_profile(data, pdata):
 
             colt = ['Color', 'w', 'l', "t"]
             col = ['Color', 'w', 'l', "t"]
-            st.write(colt)
 
             for char in colt:
-                st.write(char)
                 if char not in stats.columns:
-                    st.write(char)
                     col.remove(char)
                 
-                
-            st.write(stats.columns)
-            st.write(colt)   
             stats = stats[col]
             
 
