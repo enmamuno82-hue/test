@@ -124,7 +124,7 @@ def player_profile(data, pdata, ofdata):
         w1 = data[data['Game'] == "playoffs"]
         wins = w1['Outcome'].tolist().count("w")
 
-        for i in len.ofdata['Matches'].tolist():
+        for i in len(ofdata['Matches']):
             if ofdata.iloc[i]['Matches'] < 5:
                 ofdata.iloc[i]['Matches'] = 1
 
