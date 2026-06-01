@@ -125,7 +125,7 @@ def player_profile(data, pdata, ofdata):
         wins = w1['Outcome'].tolist().count("w")
 
         for i in range(len(ofdata['Matches'])):
-            if ofdata.iloc[i]['Matches'] < 5:
+            if ofdata.iloc[i]['Matches'].astype(int) < 5:
                 ofdata.iloc[i]['Matches'] = 1
 
         ofdata1 = ofdata[ofdata['PlayerID1'].astype(str) == str(pid)]
