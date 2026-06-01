@@ -137,7 +137,7 @@ def player_profile(data, pdata, ofdata):
         ofdata1 = ofdata[ofdata['PlayerID1'].astype(str) == str(pid)]
         ofdata2 = ofdata[ofdata['PlayerID2'].astype(str) == str(pid)]
 
-        st.wrtie(first)
+        st.write(first)
         st.write(ofdata1)
         st.write(ofdata2)
 
