@@ -126,7 +126,7 @@ def player_profile(data, pdata, ofdata):
 
         for i in range(len(ofdata['Matches'])):
             if ofdata.iloc[i]['Matches'].astype(int) < 5:
-                stats.at[1, 'Matches'] = 1
+                stats.at[i, 'Matches'] = 1
 
         ofdata1 = ofdata[ofdata['PlayerID1'].astype(str) == str(pid)]
         ofdata2 = ofdata[ofdata['PlayerID2'].astype(str) == str(pid)]
