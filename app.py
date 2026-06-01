@@ -137,9 +137,6 @@ def player_profile(data, pdata, ofdata):
         semis = ofdata1['Matches'].tolist().count(2) + ofdata2['Matches'].tolist().count(2)
         finals = ofdata1['Matches'].tolist().count(3) + ofdata2['Matches'].tolist().count(3)
         
-        st.write(finals)
-        st.write(ofdata1)
-        st.write(ofdata2)
 
         ach = {
             "Playoff Wins": [wins],
