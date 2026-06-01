@@ -118,8 +118,6 @@ def player_profile(data, pdata, ofdata):
     
         data = data[data['PlayerID'].astype(str) == str(pid)]
         st.subheader("Achievements")
-        plays = data.groupby(['Season', 'Game']).size().reset_index()
-        offs = plays['Game'].tolist().count("playoffs")
         
         w1 = data[data['Game'] == "playoffs"]
         wins = w1['Outcome'].tolist().count("w")
@@ -145,7 +143,9 @@ def player_profile(data, pdata, ofdata):
 
         ach = {
             "Playoff Wins": [wins],
-            "In Playoffs": [offs]
+            "In Playoffs": [first],
+            "Semi Finals": [semis],
+            "Finals": [finals]
         }
 
         achi = pd.DataFrame(ach)
