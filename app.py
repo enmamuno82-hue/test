@@ -124,8 +124,10 @@ def player_profile(data, pdata, ofdata):
         w1 = data[data['Game'] == "playoffs"]
         wins = w1['Outcome'].tolist().count("w")
 
-        ofdata = ofdata[ofdata['PlayerID1'].astype(str) == str(pid) or ofdata['PlayerID2'].astype(str) == str(pid)]
-        st.write(ofdata)
+        ofdata1 = ofdata[ofdata['PlayerID1'].astype(str) == str(pid)]
+        ofdata2 = ofdata[ofdata['PlayerID2'].astype(str) == str(pid)]
+        st.write(ofdata1)
+        st.write(ofdata2)
 
         ach = {
             "Playoff Wins": [wins],
