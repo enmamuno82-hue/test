@@ -146,8 +146,11 @@ def player_profile(data, pdata):
             col = ['Color', 'w', 'l', "t", "buffer"]
             st.write(col)
 
-            for c in col:
-                st.write(c)
+            for char in col:
+                st.write(char)
+                if char not in stats.columns:
+                    st.write(char)
+                    col.remove(char)
                 
                 
             st.write(stats.columns)
