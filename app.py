@@ -143,10 +143,11 @@ def player_profile(data, pdata):
                 st.write(stats)
 
 
-            col = ['Color', 'w', 'l', "t", "buffer"]
-            st.write(col)
+            colt = ['Color', 'w', 'l', "t"]
+            col = ['Color', 'w', 'l', "t"]
+            st.write(colt)
 
-            for char in col:
+            for char in colt:
                 st.write(char)
                 if char not in stats.columns:
                     st.write(char)
@@ -154,7 +155,7 @@ def player_profile(data, pdata):
                 
                 
             st.write(stats.columns)
-            st.write(col)   
+            st.write(colt)   
             stats = stats[col]
             
 
