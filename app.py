@@ -124,8 +124,14 @@ def player_profile(data, pdata, ofdata):
         w1 = data[data['Game'] == "playoffs"]
         wins = w1['Outcome'].tolist().count("w")
 
+        for i in len.ofdata['Matches']
+            if ofdata.iloc[i]['Matches'] < 5:
+                ofdata.iloc[i]['Matches'] = 1
+
         ofdata1 = ofdata[ofdata['PlayerID1'].astype(str) == str(pid)]
         ofdata2 = ofdata[ofdata['PlayerID2'].astype(str) == str(pid)]
+
+
         st.write(ofdata1)
         st.write(ofdata2)
 
