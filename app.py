@@ -97,7 +97,7 @@ def create_games(data, pdata):
 
     st.dataframe(wgames,hide_index=True)
 
-def player_profile(data, pdata):
+def player_profile(data, pdata, ofdata):
     #calculate how many times they have made the playoffs, semis, finals, tourney wins, all time stats
     pid = st.query_params["player_id"]
 
@@ -123,6 +123,9 @@ def player_profile(data, pdata):
         
         w1 = data[data['Game'] == "playoffs"]
         wins = w1['Outcome'].tolist().count("w")
+
+        ofdata = ofdata[ofdata['PlayerID1'].astype(str) == str(pid) or ofdata['PlayerID2'].astype(str) == str(pid)]
+        st.write(ofdata)
 
         ach = {
             "Playoff Wins": [wins],
@@ -228,7 +231,7 @@ if "player_id" in st.query_params:
         st.query_params['page'] = "standings"
         st.rerun()
     
-    player_profile(games, players)
+    player_profile(games, players, offst)
 
 
 elif st.query_params['page'] == "standings":
@@ -248,7 +251,6 @@ elif st.query_params['page'] == "standings":
     st.title(sfilt['Seasonname'].iat[0])
     standings = create_standings(filtered, players)
 
-    st.write(offst)
 
 elif st.query_params['page'] == "games":
     with st.sidebar:
