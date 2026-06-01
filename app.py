@@ -127,6 +127,10 @@ def player_profile(data, pdata, ofdata):
         for i in range(len(ofdata['Matches'])):
             if ofdata.iloc[i]['Matches'] < 5:
                 ofdata.at[i, 'Matches'] = 1
+            elif ofdata.iloc[i]['Matches'] < 7:
+                ofdata.at[i, 'Matches'] = 2
+            else:
+                ofdata.at[i, 'Matches'] = 3
 
         ofdata1 = ofdata[ofdata['PlayerID1'].astype(str) == str(pid)]
         ofdata2 = ofdata[ofdata['PlayerID2'].astype(str) == str(pid)]
