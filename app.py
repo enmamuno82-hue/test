@@ -136,8 +136,10 @@ def player_profile(data, pdata, ofdata):
         ofdata2 = ofdata[ofdata['PlayerID2'].astype(str) == str(pid)]
 
         first = ofdata1['Matches'].tolist().count(1) + ofdata2['Matches'].tolist().count(1)
+        semis = ofdata1['Matches'].tolist().count(2) + ofdata2['Matches'].tolist().count(2)
+        finals = ofdata1['Matches'].tolist().count(3) + ofdata2['Matches'].tolist().count(3)
         
-        st.write(first)
+        st.write(semis)
         st.write(ofdata1)
         st.write(ofdata2)
 
